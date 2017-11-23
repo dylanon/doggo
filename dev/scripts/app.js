@@ -7,13 +7,27 @@ class App extends React.Component {
     this.state = {
       actions: []
     }
+    this.addAction = this.addAction.bind(this);
   }
+
+  addAction(name, description) {
+    console.log('adding action', name, description);
+    const tempState = Array.from(this.state.actions);
+    tempState.push({
+      name: name,
+      description: description
+    });
+    this.setState({
+      actions: tempState
+    });
+  }
+
   render() {
     return (
       <div>
         <Header />
         <main>
-          <CreateActionForm />
+          <CreateActionForm addAction={this.addAction}/>
           <ActionList />
         </main>
       </div>
@@ -37,6 +51,7 @@ class CreateActionForm extends React.Component {
       actionDescription: ''
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -50,7 +65,7 @@ class CreateActionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('clicked');
+    this.props.addAction(this.state.actionName, this.state.actionDescription);
   }
 
   render() {
