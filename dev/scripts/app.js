@@ -8,7 +8,7 @@ class App extends React.Component {
     this.state = {
       actions: []
     }
-    this.addAction = this.addAction.bind(this);
+    // this.addAction = this.addAction.bind(this);
   }
 
   componentDidMount() {
@@ -24,24 +24,24 @@ class App extends React.Component {
     firebase.initializeApp(config);
   }
 
-  addAction(name, description) {
-    console.log('adding action', name, description);
-    const tempState = Array.from(this.state.actions);
-    tempState.push({
-      name: name,
-      description: description
-    });
-    this.setState({
-      actions: tempState
-    });
-  }
+  // addAction(name, description) {
+  //   console.log('adding action', name, description);
+  //   const tempState = Array.from(this.state.actions);
+  //   tempState.push({
+  //     name: name,
+  //     description: description
+  //   });
+  //   this.setState({
+  //     actions: tempState
+  //   });
+  // }
 
   render() {
     return (
       <div>
         <Header />
         <main>
-          <CreateActionForm addAction={this.addAction}/>
+          <CreateActionForm />
           <ActionList storedActions={this.state.actions} />
         </main>
       </div>
@@ -79,7 +79,14 @@ class CreateActionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addAction(this.state.actionName, this.state.actionDescription);
+    // Create a database reference to the actions list
+    const actionsRef = firebase.database().ref('users/dylanon/actions');
+    // Push the new action to firebase
+    actionsRef.push({
+      actionName: this.state.actionName,
+      actionDescription: this.state.actionDescription
+    });
+    // Clear the inputs
     this.setState({
       actionName: '',
       actionDescription: ''
