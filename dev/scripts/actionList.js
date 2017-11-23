@@ -3,13 +3,14 @@ import firebase from './firebase';
 
 class ActionList extends React.Component {
   handleClick(actionID, actionName) {
-    // Push timestamp, action id, and action name to log in firebase
+    // Set the database reference
     const logRef = firebase.database().ref('users/dylanon/log');
+    // Push timestamp, action id, and action name to log in firebase
     const timestamp = new Date();
     logRef.push({
       actionName: actionName,
       actionID: actionID,
-      timestamp: firebase.database.ServerValue.TIMESTAMP
+      timestamp: firebase.database.ServerValue.TIMESTAMP,
     });
     // Change last completed to 'Just now'
   }
