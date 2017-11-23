@@ -40,7 +40,7 @@ class Log extends React.Component {
                         const timestamp = new Date(entry.timestamp);
                         const humanTime = (timestamp.getMonth() + 1) + '/' + timestamp.getDate() + '/' + timestamp.getFullYear();
                         return (
-                            <li>
+                            <li key={entry.logID}>
                                 <p>You completed: {entry.actionName}</p>
                                 <p>{humanTime}</p>
                             </li>
