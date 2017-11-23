@@ -15,8 +15,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // Create a database reference to the actions list
-    // const actionsRef = firebase.database().ref('users/dylanon/actions');
     // Load actions from firebase
     actionsRef.on('value', (snapshot) => {
       const actions = snapshot.val();

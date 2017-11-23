@@ -24,8 +24,6 @@ class CreateActionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // Create a database reference to the actions list
-        // const actionsRef = firebase.database().ref('users/dylanon/actions');
         // Push the new action to firebase
         actionsRef.push({
         actionName: this.state.actionName,
