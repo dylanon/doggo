@@ -5,6 +5,7 @@ import {actionsRef} from './firebase'
 import Header from './header';
 import ActionForm from './actionForm';
 import ActionList from './actionList';
+import Log from './log';
 
 class App extends React.Component {
   constructor() {
@@ -41,6 +42,7 @@ class App extends React.Component {
         <main>
           <ActionForm />
           <ActionList storedActions={this.state.actions} />
+          <Log />
         </main>
       </div>
     )
