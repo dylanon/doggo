@@ -14,7 +14,6 @@ class ActionForm extends React.Component {
     }
 
     handleChange(e) {
-        console.log(e.target.name);
         const inputName = e.target.name;
         const inputValue = e.target.value;
         this.setState({
