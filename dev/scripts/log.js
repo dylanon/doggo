@@ -8,7 +8,7 @@ class Log extends React.Component {
             log: []
         }
     }
-    
+
     componentDidMount() {
         // Set the database reference
         const logRef = firebase.database().ref('users/dylanon/log');
@@ -16,13 +16,13 @@ class Log extends React.Component {
             const retrievedLog = snapshot.val();
             const tempLog = [];
             for (let item in retrievedLog) {
-            const logItem = {
-                logID: item,
-                actionID: retrievedLog[item].actionID,
-                actionName: retrievedLog[item].actionName,
-                timestamp: retrievedLog[item].timestamp
-            }
-            tempLog.push(logItem);
+                const logItem = {
+                    logID: item,
+                    actionID: retrievedLog[item].actionID,
+                    actionName: retrievedLog[item].actionName,
+                    timestamp: retrievedLog[item].timestamp
+                }
+                tempLog.push(logItem);
             }
             this.setState({
                 log: tempLog
@@ -35,9 +35,16 @@ class Log extends React.Component {
             <div>
                 <h2>Log</h2>
                 <ul>
-                    <li>You completed: </li>
-                    <li>You completed: </li>
-                    <li>You completed: </li>
+                    {this.state.log.map((entry) => {
+                        const timestamp = new Date(entry.timestamp);
+                        const humanTime = (timestamp.getMonth() + 1) + '/' + timestamp.getDate() + '/' + timestamp.getFullYear();
+                        return (
+                            <li>
+                                <p>You completed: {entry.actionName}</p>
+                                <p>{humanTime}</p>
+                            </li>
+                        )
+                    })}
                 </ul>
             </div>
         )
