@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from './firebase';
 import {actionsRef} from './firebase'
 
-class CreateActionForm extends React.Component {
+class ActionForm extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -52,4 +52,4 @@ class CreateActionForm extends React.Component {
     }
 }
 
-export default CreateActionForm;
+export default ActionForm;

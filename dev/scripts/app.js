@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import firebase from './firebase';
 import {actionsRef} from './firebase'
 import Header from './header';
-import CreateActionForm from './createActionForm';
+import ActionForm from './actionForm';
 import ActionList from './actionList';
 
 class App extends React.Component {
@@ -39,7 +39,7 @@ class App extends React.Component {
       <div>
         <Header />
         <main>
-          <CreateActionForm />
+          <ActionForm />
           <ActionList storedActions={this.state.actions} />
         </main>
       </div>
