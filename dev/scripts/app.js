@@ -123,7 +123,7 @@ class ActionList extends React.Component {
         <ul>
           {this.props.storedActions.map(action => {
             return (
-              <li>
+              <li key={action.key}>
                 <p>{action.name} | <span>{action.description}</span></p>
                 <p>Last completed: Yesterday at 7:20am</p>
               </li>
