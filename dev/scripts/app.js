@@ -28,7 +28,7 @@ class App extends React.Component {
         <Header />
         <main>
           <CreateActionForm addAction={this.addAction}/>
-          <ActionList />
+          <ActionList storedActions={this.state.actions} />
         </main>
       </div>
     )
@@ -66,6 +66,10 @@ class CreateActionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addAction(this.state.actionName, this.state.actionDescription);
+    this.setState({
+      actionName: '',
+      actionDescription: ''
+    });
   }
 
   render() {
@@ -74,9 +78,9 @@ class CreateActionForm extends React.Component {
         <h2>Create an action</h2>
         <form action="" id="create-action" onSubmit={this.handleSubmit}>
           <label htmlFor="new-action-name">Action Name:</label>
-          <input type="text" id="new-action-name" name="actionName" onChange={this.handleChange} />
+          <input type="text" id="new-action-name" name="actionName" onChange={this.handleChange} value={this.state.actionName} />
           <label htmlFor="new-action-description">Description (optional):</label>
-          <input type="text" id="new-action-description" name="actionDescription" onChange={this.handleChange} />
+          <input type="text" id="new-action-description" name="actionDescription" onChange={this.handleChange} value={this.state.actionDescription} />
           <button type="submit">Create</button>
         </form>
       </div>
@@ -90,11 +94,14 @@ class ActionList extends React.Component {
       <div>
         <h2>Actions</h2>
         <ul>
-          <li>Some actions</li>
-          <li>Some actions</li>
-          <li>Some actions</li>
-          <li>Some actions</li>
-          <li>Some actions</li>
+          {this.props.storedActions.map(action => {
+            return (
+              <li>
+                <p>{action.name} | <span>{action.description}</span></p>
+                <p>Last completed: Yesterday at 7:20am</p>
+              </li>
+            )
+          })}
         </ul>
       </div>
     )
