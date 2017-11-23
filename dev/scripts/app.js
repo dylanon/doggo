@@ -22,24 +22,27 @@ class App extends React.Component {
     this.state = {
       actions: []
     }
-    // this.addAction = this.addAction.bind(this);
   }
 
   componentDidMount() {
     // Load actions from firebase
+    actionsRef.on('value', (snapshot) => {
+      const actions = snapshot.val();
+      const newState = [];
+      // Store the actions in a staging array
+      for (let action in actions) {
+        newState.push({
+          key: action,
+          name: actions[action].actionName,
+          description: actions[action].actionDescription
+        });
+      }
+      // Update the state
+      this.setState({
+        actions: newState
+      });
+    });
   }
-
-  // addAction(name, description) {
-  //   console.log('adding action', name, description);
-  //   const tempState = Array.from(this.state.actions);
-  //   tempState.push({
-  //     name: name,
-  //     description: description
-  //   });
-  //   this.setState({
-  //     actions: tempState
-  //   });
-  // }
 
   render() {
     return (
