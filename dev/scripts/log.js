@@ -24,8 +24,9 @@ class Log extends React.Component {
                 }
                 tempLog.push(logItem);
             }
+
             this.setState({
-                log: tempLog
+                log: tempLog.reverse()
             });
         });
     }
