@@ -25,7 +25,8 @@ class App extends React.Component {
         newState.push({
           key: action,
           name: actions[action].actionName,
-          description: actions[action].actionDescription
+          description: actions[action].actionDescription,
+          lastCompleted: actions[action].lastCompleted
         });
       }
       // Update the state

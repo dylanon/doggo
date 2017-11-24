@@ -42,10 +42,18 @@ class ActionList extends React.Component {
         <h2>Actions</h2>
         <ul>
           {this.props.storedActions.map(action => {
+            // Generate the 'last completed' text
+            let lastCompletedString = '';
+            if (action.lastCompleted) {
+              lastCompletedString = moment(action.lastCompleted).fromNow();
+            } else {
+              lastCompletedString = 'Never';
+            }
+            // Generate the markup
             return (
               <li key={action.key}>
                 <p>{action.name} | <span>{action.description}</span></p>
-                <p>Last completed: Yesterday at 7:20am</p>
+                <p>Last completed: {lastCompletedString}</p>
                 <a href="#" id="log-action" onClick={() => {this.handleClick(action.key, action.name)}}>Complete Action (add to log)</a> | 
                 <a href="#" id="delete-action" data-delete={action.key} onClick={this.handleDelete}>(Delete)</a>
               </li>
