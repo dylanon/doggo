@@ -10,6 +10,10 @@
   - Can also view a log by action (e.g. log of all the times the dog was fed)
 - Persistent data stored, loaded, and updated with Firebase
 
+## Parked Issues
+
+- `handleClick()` method of `<ActionList />` does not prevent the page from reloading on link click (*actionList.js*)
+
 ## Stretch Goals
 
 - User 'creates' dog(s) (name, breed, age)
