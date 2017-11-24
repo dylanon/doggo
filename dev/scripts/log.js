@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
+import moment from 'moment';
 
 class Log extends React.Component {
     constructor() {
@@ -37,8 +38,8 @@ class Log extends React.Component {
                 <h2>Log</h2>
                 <ul>
                     {this.state.log.map((entry) => {
-                        const timestamp = new Date(entry.timestamp);
-                        const humanTime = (timestamp.getMonth() + 1) + '/' + timestamp.getDate() + '/' + timestamp.getFullYear();
+                        const timestamp = moment(entry.timestamp);
+                        const humanTime = timestamp.format("dddd, MMMM Do YYYY, h:mm a");
                         return (
                             <li key={entry.logID}>
                                 <p>You completed: {entry.actionName}</p>
