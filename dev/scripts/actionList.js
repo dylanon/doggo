@@ -1,16 +1,18 @@
 import React from 'react';
 import firebase from './firebase';
+import moment from 'moment';
 
 class ActionList extends React.Component {
   handleClick(actionID, actionName) {
     // Set the database reference
     const logRef = firebase.database().ref('users/dylanon/log');
     // Push timestamp, action id, and action name to log in firebase
-    const timestamp = new Date();
+    const timestamp = moment().valueOf();
+    console.log('time:', timestamp);
     logRef.push({
       actionName: actionName,
       actionID: actionID,
-      timestamp: firebase.database.ServerValue.TIMESTAMP,
+      timestamp: timestamp
     });
     // Change last completed to 'Just now'
   }
