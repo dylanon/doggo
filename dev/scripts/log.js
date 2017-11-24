@@ -9,14 +9,16 @@ class Log extends React.Component {
         this.state = {
             log: [],
             filterBy: '',
+            filterByName: ''
         }
         this.filterLog = this.filterLog.bind(this);
         this.resetFilter = this.resetFilter.bind(this);
     }
 
-    filterLog(actionID) {
+    filterLog(actionID, actionName) {
         this.setState({
-            filterBy: actionID
+            filterBy: actionID,
+            filterByName: actionName
         });
     }
 
@@ -70,10 +72,15 @@ class Log extends React.Component {
                 uniqueDates.push(entry.date);
             }
         });
+        // Build the log heading text
+        let logHeading = 'Log';
+        if (this.state.filterBy.length > 0) {
+            logHeading = logHeading + `: ${this.state.filterByName}`;
+        }
         // Display the markup
         return (
             <div>
-                <h2>Log</h2>
+                <h2>{logHeading}</h2>
                 {/* If the log has been filtered, show a link to reset */}
                 {this.state.filterBy.length > 0 &&
                     <a href="#" onClick={this.resetFilter}>Display all actions</a>

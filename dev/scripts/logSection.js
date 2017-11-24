@@ -33,7 +33,7 @@ class LogItem extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        this.props.filterFunction(this.props.entry.actionID);
+        this.props.filterFunction(this.props.entry.actionID, this.props.entry.actionName);
     }
 
     render() {
