@@ -8,7 +8,7 @@ class Log extends React.Component {
         super();
         this.state = {
             log: [],
-            dates: []
+            filterBy: '-KzfUEHo07K0M6aqceIi',
         }
     }
 
@@ -34,29 +34,36 @@ class Log extends React.Component {
             // Sort by timestamp (reverse chronological order)
             tempLog.sort((a, b) => b.timestamp - a.timestamp);
 
-            // Store each unique calendar date
-            const uniqueDates = [];
-            tempLog.forEach((entry) => {
-                if (uniqueDates.includes(entry.date) === false) {
-                    uniqueDates.push(entry.date);
-                }
-            });
-
             // Update the state
             this.setState({
                 log: tempLog,
-                dates: uniqueDates
             });
         });
     }
 
     render() {
+        // Get the array of log items
+        let logArray = Array.from(this.state.log);
+        // If there is an action to filter by, filter only those that match the action ID
+        if (this.state.filterBy.length > 0) {
+            logArray = logArray.filter((entry) => {
+                return entry.actionID === this.state.filterBy;
+            });
+        }
+        // Store each unique calendar date
+        const uniqueDates = [];
+        logArray.forEach((entry) => {
+            if (uniqueDates.includes(entry.date) === false) {
+                uniqueDates.push(entry.date);
+            }
+        });
+        // Display the markup
         return (
             <div>
                 <h2>Log</h2>
                 {/* Map over the array of unique dates, display a section for each */}
-                {this.state.dates.map((date) => {
-                    return <LogSection key={date} date={date} log={this.state.log}/>
+                {uniqueDates.map((date) => {
+                    return <LogSection key={date} date={date} log={logArray}/>
                 })}
             </div>
         )
