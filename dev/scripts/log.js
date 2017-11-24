@@ -74,7 +74,10 @@ class Log extends React.Component {
         return (
             <div>
                 <h2>Log</h2>
-                <a href="#" onClick={this.resetFilter}>Display all actions</a>
+                {/* If the log has been filtered, show a link to reset */}
+                {this.state.filterBy.length > 0 &&
+                    <a href="#" onClick={this.resetFilter}>Display all actions</a>
+                }
                 {/* Map over the array of unique dates, display a section for each */}
                 {uniqueDates.map((date) => {
                     return <LogSection key={date} date={date} log={logArray} filterFunction={this.filterLog} filterBy={this.state.filterBy}/>
