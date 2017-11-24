@@ -25,15 +25,27 @@ const LogSection = (props) => {
     )
 }
 
-const LogItem = (props) => {
-    const entry = props.entry;
-    return (
-        <li>
-            <p>You completed: {entry.actionName}</p>
-            <p>{moment(entry.timestamp).format('h:mm a')}</p>
-            <a href="#" id="log-action-filter" onClick={() => props.filterFunction(entry.actionID)}>View log for this action only</a>
-        </li>
-    )
+class LogItem extends React.Component {
+    constructor() {
+        super();
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        this.props.filterFunction(this.props.entry.actionID);
+    }
+
+    render() {
+        const entry = this.props.entry;
+        return (
+            <li>
+                <p>You completed: {entry.actionName}</p>
+                <p>{moment(entry.timestamp).format('h:mm a')}</p>
+                <a href="#" id="log-action-filter" onClick={this.handleClick}>View log for this action only</a>
+            </li>
+        )
+    }
 }
 
 export default LogSection;
