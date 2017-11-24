@@ -19,17 +19,22 @@ class LogSection extends React.Component {
                 <h3>{dateHeading}</h3>
                 <ul>
                     {todaysLogs.map((entry) => {
-                        return (
-                            <li key={entry.logID}>
-                                <p>You completed: {entry.actionName}</p>
-                                <p>{moment(entry.timestamp).format('h:mm a')}</p>
-                            </li>
-                        )
+                        return <LogItem entry={entry}/>
                     })}
                 </ul>
             </div>
         )
     }
+}
+
+const LogItem = (props) => {
+    const entry = props.entry;
+    return (
+        <li key={entry.logID}>
+            <p>You completed: {entry.actionName}</p>
+            <p>{moment(entry.timestamp).format('h:mm a')}</p>
+        </li>
+    )
 }
 
 export default LogSection;
