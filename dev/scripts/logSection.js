@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from './firebase';
 import moment from 'moment';
 
 const LogSection = (props) => {
@@ -29,12 +30,20 @@ class LogItem extends React.Component {
     constructor() {
         super();
         this.handleClick = this.handleClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleClick(e) {
         e.preventDefault();
         this.props.filterFunction(this.props.entry.actionID, this.props.entry.actionName);
     }
+
+    handleDelete(e) {
+        e.preventDefault();
+        const logID = this.props.entry.logID;
+        const deleteRef = firebase.database().ref(`users/dylanon/log/${logID}`)
+        deleteRef.remove();
+      }
 
     render() {
         const entry = this.props.entry;
@@ -43,8 +52,9 @@ class LogItem extends React.Component {
                 <p>You completed: {entry.actionName}</p>
                 <p>{moment(entry.timestamp).format('h:mm a')}</p>
                 {this.props.filterBy.length === 0 &&
-                    <a href="#" id="log-action-filter" onClick={this.handleClick}>View log for this action only</a>
+                    <p><a href="#" onClick={this.handleClick}>View log for this action only</a></p>
                 }
+                <p><a href="#" onClick={this.handleDelete}>(Delete this entry)</a></p>
             </li>
         )
     }
