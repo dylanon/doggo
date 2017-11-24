@@ -18,7 +18,7 @@ const LogSection = (props) => {
             <h3>{dateHeading}</h3>
             <ul>
                 {todaysLogs.map((entry) => {
-                    return <LogItem entry={entry}/>
+                    return <LogItem key={entry.logID} entry={entry}/>
                 })}
             </ul>
         </div>
@@ -28,7 +28,7 @@ const LogSection = (props) => {
 const LogItem = (props) => {
     const entry = props.entry;
     return (
-        <li key={entry.logID}>
+        <li>
             <p>You completed: {entry.actionName}</p>
             <p>{moment(entry.timestamp).format('h:mm a')}</p>
         </li>

@@ -56,7 +56,7 @@ class Log extends React.Component {
                 <h2>Log</h2>
                 {/* Map over the array of unique dates, display a section for each */}
                 {this.state.dates.map((date) => {
-                    return <LogSection date={date} log={this.state.log}/>
+                    return <LogSection key={date} date={date} log={this.state.log}/>
                 })}
             </div>
         )
