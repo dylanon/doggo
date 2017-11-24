@@ -12,7 +12,7 @@
 
 ## Parked Issues
 
-- `handleClick()` method of `<ActionList />` does not prevent the page from reloading on link click (*actionList.js*)
+- *Last completed* doesn't update when a log entry is deleted
 
 ## Stretch Goals
 
