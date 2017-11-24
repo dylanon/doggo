@@ -3,18 +3,23 @@ import firebase from './firebase';
 import moment from 'moment';
 
 class ActionList extends React.Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   handleClick(actionID, actionName) {
     // Set the database reference
     const logRef = firebase.database().ref('users/dylanon/log');
     // Push timestamp, action id, and action name to log in firebase
     const timestamp = moment().valueOf();
-    console.log('time:', timestamp);
     logRef.push({
       actionName: actionName,
       actionID: actionID,
       timestamp: timestamp
     });
     // Change last completed to 'Just now'
+    this.setLastCompleted(actionID, timestamp);
   }
 
   handleDelete(e) {
@@ -22,6 +27,13 @@ class ActionList extends React.Component {
     const deleteID = e.target.getAttribute('data-delete');
     const deleteRef = firebase.database().ref(`users/dylanon/actions/${deleteID}`)
     deleteRef.remove();
+  }
+
+  setLastCompleted(actionID, latestTimestamp) {
+    const thisActionRef = firebase.database().ref(`users/dylanon/actions/${actionID}`);
+    thisActionRef.update({
+      lastCompleted: latestTimestamp
+    });
   }
 
   render() {
