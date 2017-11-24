@@ -11,12 +11,18 @@ class Log extends React.Component {
             filterBy: '',
         }
         this.filterLog = this.filterLog.bind(this);
+        this.resetFilter = this.resetFilter.bind(this);
     }
 
     filterLog(actionID) {
         this.setState({
             filterBy: actionID
         });
+    }
+
+    resetFilter(e) {
+        e.preventDefault();
+        this.filterLog('');
     }
 
     componentDidMount() {
@@ -68,6 +74,7 @@ class Log extends React.Component {
         return (
             <div>
                 <h2>Log</h2>
+                <a href="#" onClick={this.resetFilter}>Display all actions</a>
                 {/* Map over the array of unique dates, display a section for each */}
                 {uniqueDates.map((date) => {
                     return <LogSection key={date} date={date} log={logArray} filterFunction={this.filterLog} filterBy={this.state.filterBy}/>
