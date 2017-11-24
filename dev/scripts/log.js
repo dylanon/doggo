@@ -15,9 +15,9 @@ class Log extends React.Component {
     componentDidMount() {
         // Set the database reference
         const logRef = firebase.database().ref('users/dylanon/log');
-        
+
         // Load log data and listen for changes
-        logRef.orderByChild('timestamp').on('value', (snapshot) => {
+        logRef.on('value', (snapshot) => {
             const retrievedLog = snapshot.val();
             const tempLog = [];
             for (let item in retrievedLog) {
@@ -31,8 +31,8 @@ class Log extends React.Component {
                 tempLog.push(logItem);
             }
 
-            // Order reverse chronologically
-            tempLog.reverse();
+            // Sort by timestamp (reverse chronological order)
+            tempLog.sort((a, b) => b.timestamp - a.timestamp);
 
             // Store each unique calendar date
             const uniqueDates = [];
