@@ -52,18 +52,31 @@ class Log extends React.Component {
         return (
             <div>
                 <h2>Log</h2>
-                <ul>
-                    {this.state.log.map((entry) => {
-                        const timestamp = moment(entry.timestamp);
-                        const humanTime = timestamp.format("dddd, MMMM Do YYYY, h:mm a");
-                        return (
-                            <li key={entry.logID}>
-                                <p>You completed: {entry.actionName}</p>
-                                <p>{humanTime}</p>
-                            </li>
-                        )
-                    })}
-                </ul>
+                {/* Map over the array of unique dates */}
+                {this.state.dates.map((date) => {
+                    // Create today's heading
+                    const dateHeading = moment(date).format("MMMM Do, YYYY")
+                    // Grab only today's logs
+                    const todaysLogs = this.state.log.filter((entry) => {
+                        return entry.date === date;
+                    })
+
+                    return (
+                        <div>
+                            <h3>{dateHeading}</h3>
+                            <ul>
+                                {todaysLogs.map((entry) => {
+                                    return (
+                                        <li key={entry.logID}>
+                                            <p>You completed: {entry.actionName}</p>
+                                            <p>{moment(entry.timestamp).format('h:mm a')}</p>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
