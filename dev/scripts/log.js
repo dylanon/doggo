@@ -15,6 +15,7 @@ class Log extends React.Component {
     componentDidMount() {
         // Set the database reference
         const logRef = firebase.database().ref('users/dylanon/log');
+        
         // Load log data and listen for changes
         logRef.orderByChild('timestamp').on('value', (snapshot) => {
             const retrievedLog = snapshot.val();
@@ -53,7 +54,7 @@ class Log extends React.Component {
         return (
             <div>
                 <h2>Log</h2>
-                {/* Map over the array of unique dates */}
+                {/* Map over the array of unique dates, display a section for each */}
                 {this.state.dates.map((date) => {
                     return <LogSection date={date} log={this.state.log}/>
                 })}
