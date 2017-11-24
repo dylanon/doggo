@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import moment from 'moment';
+import LogSection from './logSection';
 
 class Log extends React.Component {
     constructor() {
@@ -54,28 +55,7 @@ class Log extends React.Component {
                 <h2>Log</h2>
                 {/* Map over the array of unique dates */}
                 {this.state.dates.map((date) => {
-                    // Create today's heading
-                    const dateHeading = moment(date).format("MMMM Do, YYYY")
-                    // Grab only today's logs
-                    const todaysLogs = this.state.log.filter((entry) => {
-                        return entry.date === date;
-                    })
-
-                    return (
-                        <div>
-                            <h3>{dateHeading}</h3>
-                            <ul>
-                                {todaysLogs.map((entry) => {
-                                    return (
-                                        <li key={entry.logID}>
-                                            <p>You completed: {entry.actionName}</p>
-                                            <p>{moment(entry.timestamp).format('h:mm a')}</p>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </div>
-                    )
+                    return <LogSection date={date} log={this.state.log}/>
                 })}
             </div>
         )
