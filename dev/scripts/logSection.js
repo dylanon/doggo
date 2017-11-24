@@ -18,7 +18,7 @@ const LogSection = (props) => {
             <h3>{dateHeading}</h3>
             <ul>
                 {todaysLogs.map((entry) => {
-                    return <LogItem key={entry.logID} entry={entry}/>
+                    return <LogItem key={entry.logID} entry={entry} filterFunction={props.filterFunction}/>
                 })}
             </ul>
         </div>
@@ -31,6 +31,7 @@ const LogItem = (props) => {
         <li>
             <p>You completed: {entry.actionName}</p>
             <p>{moment(entry.timestamp).format('h:mm a')}</p>
+            <a href="#" id="log-action-filter" onClick={() => props.filterFunction(entry.actionID)}>View log for this action only</a>
         </li>
     )
 }

@@ -8,8 +8,15 @@ class Log extends React.Component {
         super();
         this.state = {
             log: [],
-            filterBy: '-KzfUEHo07K0M6aqceIi',
+            filterBy: '',
         }
+        this.filterLog = this.filterLog.bind(this);
+    }
+
+    filterLog(actionID) {
+        this.setState({
+            filterBy: actionID
+        });
     }
 
     componentDidMount() {
@@ -63,7 +70,7 @@ class Log extends React.Component {
                 <h2>Log</h2>
                 {/* Map over the array of unique dates, display a section for each */}
                 {uniqueDates.map((date) => {
-                    return <LogSection key={date} date={date} log={logArray}/>
+                    return <LogSection key={date} date={date} log={logArray} filterFunction={this.filterLog}/>
                 })}
             </div>
         )
