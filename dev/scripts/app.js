@@ -139,7 +139,7 @@ class App extends React.Component {
               return (
                 <div>
                   {this.state.loggedIn ? (
-                    <Actions {...routeProps} storedActions={this.state.actions} /> 
+                    <Actions {...routeProps} userID={this.state.userID} storedActions={this.state.actions} /> 
                   ) : (
                     <a href="#" onClick={this.logIn}>Log In</a>
                   )}
@@ -147,7 +147,7 @@ class App extends React.Component {
               )
             }} />
             <Route path='/log' render={(routeProps) => {
-              return <Log {...routeProps} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter}/>
+              return <Log {...routeProps} userID={this.state.userID} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter}/>
             }} />
           </Switch>
         </main>

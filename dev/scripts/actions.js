@@ -5,8 +5,8 @@ import ActionList from './actionList';
 const Actions = (props) => {
     return (
         <div>
-            <ActionForm />
-            <ActionList storedActions={props.storedActions} />
+            <ActionForm userID={props.userID} />
+            <ActionList userID={props.userID} storedActions={props.storedActions} />
         </div>
     )
 }

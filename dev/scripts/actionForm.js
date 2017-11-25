@@ -23,7 +23,7 @@ class ActionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         // Push the new action to firebase
-        const actionsRef = firebase.database().ref('users/dylanon/actions');
+        const actionsRef = firebase.database().ref(`users/${this.props.userID}/actions`);
         actionsRef.push({
         actionName: this.state.actionName,
         actionDescription: this.state.actionDescription

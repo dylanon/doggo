@@ -33,7 +33,7 @@ class Log extends React.Component {
                 }
                 {/* Map over the array of unique dates, display a section for each */}
                 {uniqueDates.map((date) => {
-                    return <LogSection key={date} date={date} log={logArray} filterFunction={this.props.filterLog} filterBy={this.props.filterBy}/>
+                    return <LogSection key={date} date={date} log={logArray} userID={this.props.userID} filterFunction={this.props.filterLog} filterBy={this.props.filterBy}/>
                 })}
             </div>
         )

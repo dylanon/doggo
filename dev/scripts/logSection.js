@@ -19,7 +19,7 @@ const LogSection = (props) => {
             <h3>{dateHeading}</h3>
             <ul>
                 {todaysLogs.map((entry) => {
-                    return <LogItem key={entry.logID} entry={entry} filterFunction={props.filterFunction} filterBy={props.filterBy}/>
+                    return <LogItem key={entry.logID} entry={entry} userID={props.userID} filterFunction={props.filterFunction} filterBy={props.filterBy}/>
                 })}
             </ul>
         </div>
@@ -43,7 +43,7 @@ class LogItem extends React.Component {
         e.preventDefault();
         // Set up variables
         const logID = this.props.entry.logID;
-        const entryRef = firebase.database().ref(`users/dylanon/log/${logID}`);
+        const entryRef = firebase.database().ref(`users/${this.props.userID}/log/${logID}`);
         // Delete the log entry
         entryRef.remove()
         .then(() => {
@@ -56,7 +56,7 @@ class LogItem extends React.Component {
         // (in case the most recent log entry was deleted)
         // Set up variables
         const actionID = this.props.entry.actionID;
-        const logRef = firebase.database().ref(`users/dylanon/log`);
+        const logRef = firebase.database().ref(`users/${this.props.userID}/log`);
         // Get the last log entry in the database that matches the action ID and store the timestamp
         logRef.orderByChild('actionID').equalTo(actionID).limitToLast(1).once('value', (snapshot) => {
             const snapshotObject = snapshot.val();
@@ -66,7 +66,7 @@ class LogItem extends React.Component {
                 lastCompleted = snapshotObject[property].timestamp;
             }
             // Update the 'Last Completed' time of the related action in the database
-            firebase.database().ref(`users/dylanon/actions/${actionID}`).update({
+            firebase.database().ref(`users/${this.props.userID}/actions/${actionID}`).update({
                 lastCompleted: lastCompleted
             });
         });
