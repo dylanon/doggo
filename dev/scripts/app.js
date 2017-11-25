@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import firebase from './firebase';
-import {actionsRef} from './firebase'
 import moment from 'moment';
 import Header from './header';
 import Actions from './actions';
@@ -107,6 +106,7 @@ class App extends React.Component {
     });
 
     // Load actions from firebase
+    const actionsRef = firebase.database().ref('users/dylanon/actions');
     actionsRef.on('value', (snapshot) => {
       const actions = snapshot.val();
       const newState = [];

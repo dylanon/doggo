@@ -1,6 +1,5 @@
 import React from 'react';
 import firebase from './firebase';
-import {actionsRef} from './firebase'
 
 class ActionForm extends React.Component {
     constructor() {
@@ -24,6 +23,7 @@ class ActionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         // Push the new action to firebase
+        const actionsRef = firebase.database().ref('users/dylanon/actions');
         actionsRef.push({
         actionName: this.state.actionName,
         actionDescription: this.state.actionDescription

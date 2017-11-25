@@ -12,6 +12,3 @@ var config = {
 firebase.initializeApp(config);
 
 export default firebase;
-
-// Make the actions reference point available to other modules
-export const actionsRef = firebase.database().ref('users/dylanon/actions');
