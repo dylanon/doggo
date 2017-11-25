@@ -12,7 +12,7 @@
 
 ## Parked Issues
 
-- *Last completed* doesn't update when a log entry is deleted
+- Inconsistent prop naming when passing to child components
 
 ## Stretch Goals
 
