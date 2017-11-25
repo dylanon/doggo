@@ -1,6 +1,4 @@
 import React from 'react';
-import firebase from 'firebase';
-import moment from 'moment';
 import LogSection from './logSection';
 
 class Log extends React.Component {
