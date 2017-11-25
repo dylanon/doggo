@@ -31,6 +31,7 @@ class LogItem extends React.Component {
         super();
         this.handleClick = this.handleClick.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.updateLastCompleted = this.updateLastCompleted.bind(this);
     }
 
     handleClick(e) {
@@ -42,27 +43,34 @@ class LogItem extends React.Component {
         e.preventDefault();
         // Set up variables
         const logID = this.props.entry.logID;
-        const actionID = this.props.entry.actionID;
         const entryRef = firebase.database().ref(`users/dylanon/log/${logID}`);
-        const logRef = firebase.database().ref(`users/dylanon/log`);
         // Delete the log entry
         entryRef.remove()
         .then(() => {
-            // Get the last log entry in the database that matches the action ID and store the timestamp
-            logRef.orderByChild('actionID').equalTo(actionID).limitToLast(1).once('value', (snapshot) => {
-                const snapshotObject = snapshot.val();
-                let lastCompleted = 0;
-                // Unwrap an object nested within an object
-                for (let property in snapshotObject) {
-                    lastCompleted = snapshotObject[property].timestamp;
-                }
-                // Update the 'Last Completed' time of the related action in the database
-                firebase.database().ref(`users/dylanon/actions/${actionID}`).update({
-                    lastCompleted: lastCompleted
-                });
+            this.updateLastCompleted();
+        });
+    }
+
+    updateLastCompleted() {
+        // Updates 'Last Completed' field of the related action
+        // (in case the most recent log entry was deleted)
+        // Set up variables
+        const actionID = this.props.entry.actionID;
+        const logRef = firebase.database().ref(`users/dylanon/log`);
+        // Get the last log entry in the database that matches the action ID and store the timestamp
+        logRef.orderByChild('actionID').equalTo(actionID).limitToLast(1).once('value', (snapshot) => {
+            const snapshotObject = snapshot.val();
+            let lastCompleted = 0;
+            // Unwrap an object nested within an object
+            for (let property in snapshotObject) {
+                lastCompleted = snapshotObject[property].timestamp;
+            }
+            // Update the 'Last Completed' time of the related action in the database
+            firebase.database().ref(`users/dylanon/actions/${actionID}`).update({
+                lastCompleted: lastCompleted
             });
         });
-      }
+    }
 
     render() {
         const entry = this.props.entry;
