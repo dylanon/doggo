@@ -2,13 +2,13 @@
 
 ## Basic Functionality / Pseudocode
 
-- User creates dog-related **actions** they want to track (action name, short description)
-  - Action displays name, short description, "Last completed" date, and a link to view log for that action
-  - Can delete actions
-- When an action is clicked, store the timestamp and add the completed action to the log
-- User can view their *dog log* - complete history of actions, separated by day, reverse chronological order
-  - Can also view a log by action (e.g. log of all the times the dog was fed)
-- Persistent data stored, loaded, and updated with Firebase
+- **Done**: User creates dog-related **actions** they want to track (action name, short description)
+  - **Done**: Action displays name, short description, "Last completed" date
+  - **Done**: Can delete actions
+- **Done**: When an action is clicked, store the timestamp and add the completed action to the log
+- **Done**: User can view their *dog log* - complete history of actions, separated by day, reverse chronological order
+  - **Done**: Can also view a log by action (e.g. log of all the times the dog was fed)
+- **Done**: Persistent data stored, loaded, and updated with Firebase
 
 ## Parked Issues
 
