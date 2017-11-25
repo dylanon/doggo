@@ -42,28 +42,26 @@ class LogItem extends React.Component {
         e.preventDefault();
         // Set up variables
         const logID = this.props.entry.logID;
-        const deleteRef = firebase.database().ref(`users/dylanon/log/${logID}`);
+        const entryRef = firebase.database().ref(`users/dylanon/log/${logID}`);
         const logRef = firebase.database().ref(`users/dylanon/log`);
         let actionID = '';
         // Get the action ID of the log entry we are deleting
-        deleteRef.once('value', (snapshot) => {
+        entryRef.once('value', (snapshot) => {
             actionID = snapshot.val().actionID;
         })
         .then(() => {
             // Delete the log entry
-            deleteRef.remove()
+            entryRef.remove()
             .then(() => {
                 // Get the last log entry in the database that matches the action ID and store the timestamp
                 logRef.orderByChild('actionID').equalTo(actionID).limitToLast(1).once('value', (snapshot) => {
-                    console.log(snapshot.val());
                     const snapshotObject = snapshot.val();
                     let lastCompleted = 0;
+                    // Unwrap an object nested within an object
                     for (let property in snapshotObject) {
-                        console.log(snapshotObject[property].timestamp);
-
                         lastCompleted = snapshotObject[property].timestamp;
                     }
-                    // Update the last completed time of the action in the database
+                    // Update the 'Last Completed' time of the related action in the database
                     firebase.database().ref(`users/dylanon/actions/${actionID}`).update({
                         lastCompleted: lastCompleted
                     });
