@@ -3,7 +3,15 @@ import React from 'react';
 const Header = () => {
     return (
         <header>
-        <h1>dogLog: Dog care tracker</h1>
+            <nav>
+                <h1>dogLog: Dog care tracker</h1>
+                <p>
+                    <a href="#">Home</a>
+                </p>
+                <p>
+                    <a href="#">View Log</a>
+                </p>
+            </nav>
         </header>
     )
 }
