@@ -157,7 +157,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header logIn={this.logIn} logOut={this.logOut} />
+        <Header logIn={this.logIn} logOut={this.logOut} loggedIn={this.state.loggedIn}/>
         <main>
           <Switch>
             <Route exact path='/' render={(routeProps) => {
