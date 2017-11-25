@@ -64,62 +64,69 @@ class App extends React.Component {
         userID: userID
       });
     }
+    
+    const loadActions = () => {
+      // Load actions from firebase
+      const actionsRef = firebase.database().ref(`users/${this.state.userID}/actions`);
+      actionsRef.on('value', (snapshot) => {
+        const actions = snapshot.val();
+        const newState = [];
+        // Store the actions in a staging array
+        for (let action in actions) {
+          newState.push({
+            key: action,
+            name: actions[action].actionName,
+            description: actions[action].actionDescription,
+            lastCompleted: actions[action].lastCompleted
+          });
+        }
+        // Update the state
+        this.setState({
+          actions: newState
+        });
+      });
+    }
+
+    const loadLog = () => {
+      // Set the database reference
+      const logRef = firebase.database().ref(`users/${this.state.userID}/log`);
+      
+      // Load log data and listen for changes
+      logRef.on('value', (snapshot) => {
+          const retrievedLog = snapshot.val();
+          const tempLog = [];
+          for (let item in retrievedLog) {
+              const logItem = {
+                  logID: item,
+                  actionID: retrievedLog[item].actionID,
+                  actionName: retrievedLog[item].actionName,
+                  timestamp: retrievedLog[item].timestamp,
+                  date: moment(retrievedLog[item].timestamp).format('YYYY-MM-DD')
+              }
+              tempLog.push(logItem);
+          }
+  
+          // Sort by timestamp (reverse chronological order)
+          tempLog.sort((a, b) => b.timestamp - a.timestamp);
+  
+          // Update the state
+          this.setState({
+              log: tempLog,
+          });
+      });
+    }
 
     // Listen for changes in auth
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         setLogInState(true, user.uid);
+        loadActions();
+        loadLog();
       } else {
         setLogInState(false, '');
       }
     });
 
-    // Load actions from firebase
-    const actionsRef = firebase.database().ref('users/dylanon/actions');
-    actionsRef.on('value', (snapshot) => {
-      const actions = snapshot.val();
-      const newState = [];
-      // Store the actions in a staging array
-      for (let action in actions) {
-        newState.push({
-          key: action,
-          name: actions[action].actionName,
-          description: actions[action].actionDescription,
-          lastCompleted: actions[action].lastCompleted
-        });
-      }
-      // Update the state
-      this.setState({
-        actions: newState
-      });
-    });
-
-    // Set the database reference
-    const logRef = firebase.database().ref('users/dylanon/log');
-    
-    // Load log data and listen for changes
-    logRef.on('value', (snapshot) => {
-        const retrievedLog = snapshot.val();
-        const tempLog = [];
-        for (let item in retrievedLog) {
-            const logItem = {
-                logID: item,
-                actionID: retrievedLog[item].actionID,
-                actionName: retrievedLog[item].actionName,
-                timestamp: retrievedLog[item].timestamp,
-                date: moment(retrievedLog[item].timestamp).format('YYYY-MM-DD')
-            }
-            tempLog.push(logItem);
-        }
-
-        // Sort by timestamp (reverse chronological order)
-        tempLog.sort((a, b) => b.timestamp - a.timestamp);
-
-        // Update the state
-        this.setState({
-            log: tempLog,
-        });
-    });
   }
 
   render() {
