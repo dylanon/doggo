@@ -58,6 +58,15 @@ class App extends React.Component {
     // });
   }
 
+  logOut(e) {
+    e.preventDefault();
+    firebase.auth().signOut().then(function() {
+      console.log('sign out successful');
+    }).catch(function(error) {
+      console.log('oops - signing out did not go so well. try again.');
+    });
+  }
+
   componentDidMount() {
     // // Get sign-in info after redirect
     // firebase.auth().getRedirectResult().then(function(result) {
@@ -148,11 +157,19 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header logIn={this.logIn} />
+        <Header logIn={this.logIn} logOut={this.logOut} />
         <main>
           <Switch>
             <Route exact path='/' render={(routeProps) => {
-              return <Actions {...routeProps} storedActions={this.state.actions} />
+              return (
+                <div>
+                  {this.state.loggedIn ? (
+                    <Actions {...routeProps} storedActions={this.state.actions} /> 
+                  ) : (
+                    <a href="#" onClick={this.logIn}>Log In</a>
+                  )}
+                </div>
+              )
             }} />
             <Route path='/log' render={(routeProps) => {
               return <Log {...routeProps} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter}/>

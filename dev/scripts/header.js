@@ -10,6 +10,7 @@ const Header = (props) => {
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/log'>View Log</Link></li>
                     <li><a href="#" onClick={props.logIn}>Log In</a></li>
+                    <li><a href="#" onClick={props.logOut}>Log Out</a></li>
                 </ul>
             </nav>
         </header>
