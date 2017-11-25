@@ -5,8 +5,7 @@ import firebase from './firebase';
 import {actionsRef} from './firebase'
 import moment from 'moment';
 import Header from './header';
-import ActionForm from './actionForm';
-import ActionList from './actionList';
+import Actions from './actions';
 import Log from './log';
 
 class App extends React.Component {
@@ -90,8 +89,7 @@ class App extends React.Component {
           {/* <Switch>
 
           </Switch> */}
-          <ActionForm />
-          <ActionList storedActions={this.state.actions} />
+          <Actions storedActions={this.state.actions} />
           <Log log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter}/>
         </main>
       </div>
