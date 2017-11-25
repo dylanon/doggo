@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import firebase from './firebase';
 import {actionsRef} from './firebase'
 import moment from 'moment';
@@ -86,11 +86,14 @@ class App extends React.Component {
       <div>
         <Header />
         <main>
-          {/* <Switch>
-
-          </Switch> */}
-          <Actions storedActions={this.state.actions} />
-          <Log log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter}/>
+          <Switch>
+            <Route exact path='/' render={(routeProps) => {
+              return <Actions {...routeProps} storedActions={this.state.actions} />
+            }} />
+            <Route path='/log' render={(routeProps) => {
+              return <Log {...routeProps} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter}/>
+            }} />
+          </Switch>
         </main>
       </div>
     )
@@ -98,7 +101,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render((
-  <BrowserRouter>
+  <HashRouter>
     <App />
-  </BrowserRouter>
+  </HashRouter>
 ), document.getElementById('app'));
