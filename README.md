@@ -12,6 +12,7 @@
 
 ## Parked Issues
 
+- Log still shows even when logged out
 - Inconsistent prop naming when passing to child components
 
 ## Stretch Goals
