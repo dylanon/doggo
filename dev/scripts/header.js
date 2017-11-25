@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header>
             <nav>
@@ -9,6 +9,7 @@ const Header = () => {
                 <ul>
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/log'>View Log</Link></li>
+                    <li><a href="#" onClick={props.logIn}>Log In</a></li>
                 </ul>
             </nav>
         </header>

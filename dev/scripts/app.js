@@ -15,7 +15,8 @@ class App extends React.Component {
       actions: [],
       log: [],
       filterBy: '',
-      filterByName: ''
+      filterByName: '',
+      loggedIn: false
     }
     this.filterLog = this.filterLog.bind(this);
     this.resetFilter = this.resetFilter.bind(this);
@@ -33,7 +34,70 @@ class App extends React.Component {
     this.filterLog('');
   }
 
+  logIn(e) {
+    e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
+    // firebase.auth().signInWithPopup(provider).then(function(result) {
+    //   // This gives you a Google Access Token. You can use it to access the Google API.
+    //   var token = result.credential.accessToken;
+    //   // The signed-in user info.
+    //   var user = result.user;
+    //   // ...
+    //   console.log(`signed in`);
+    //   console.log(user);
+    // }).catch(function(error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   // The email of the user's account used.
+    //   var email = error.email;
+    //   // The firebase.auth.AuthCredential type that was used.
+    //   var credential = error.credential;
+    //   // ...
+    // });
+  }
+
   componentDidMount() {
+    // // Get sign-in info after redirect
+    // firebase.auth().getRedirectResult().then(function(result) {
+    //   if (result.credential) {
+    //     // This gives you a Google Access Token. You can use it to access the Google API.
+    //     var token = result.credential.accessToken;
+    //     // ...
+    //   }
+    //   // The signed-in user info.
+    //   var user = result.user;
+    // }).catch(function(error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   // The email of the user's account used.
+    //   var email = error.email;
+    //   // The firebase.auth.AuthCredential type that was used.
+    //   var credential = error.credential;
+    //   // ...
+    // });
+    
+    // Define a function to update log in state
+    const setLogInState = (logInBoolean) => {
+      this.setState({
+        loggedIn: logInBoolean
+      });
+      if (this.state.loggedIn) {
+        console.log('user is logged in');
+      }
+    }
+
+    // Listen for changes in auth
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        setLogInState(true);
+      } else {
+        setLogInState(false);
+      }
+    });
+
     // Load actions from firebase
     actionsRef.on('value', (snapshot) => {
       const actions = snapshot.val();
@@ -84,7 +148,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header logIn={this.logIn} />
         <main>
           <Switch>
             <Route exact path='/' render={(routeProps) => {
