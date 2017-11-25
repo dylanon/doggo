@@ -16,7 +16,8 @@ class App extends React.Component {
       log: [],
       filterBy: '',
       filterByName: '',
-      loggedIn: false
+      loggedIn: false,
+      userID: ''
     }
     this.filterLog = this.filterLog.bind(this);
     this.resetFilter = this.resetFilter.bind(this);
@@ -89,21 +90,19 @@ class App extends React.Component {
     // });
     
     // Define a function to update log in state
-    const setLogInState = (logInBoolean) => {
+    const setLogInState = (logInBoolean, userID) => {
       this.setState({
-        loggedIn: logInBoolean
+        loggedIn: logInBoolean,
+        userID: userID
       });
-      if (this.state.loggedIn) {
-        console.log('user is logged in');
-      }
     }
 
     // Listen for changes in auth
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        setLogInState(true);
+        setLogInState(true, user.uid);
       } else {
-        setLogInState(false);
+        setLogInState(false, '');
       }
     });
 
