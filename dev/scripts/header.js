@@ -5,12 +5,10 @@ const Header = () => {
         <header>
             <nav>
                 <h1>dogLog: Dog care tracker</h1>
-                <p>
-                    <a href="#">Home</a>
-                </p>
-                <p>
-                    <a href="#">View Log</a>
-                </p>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">View Log</a></li>
+                </ul>
             </nav>
         </header>
     )
