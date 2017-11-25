@@ -42,29 +42,23 @@ class LogItem extends React.Component {
         e.preventDefault();
         // Set up variables
         const logID = this.props.entry.logID;
+        const actionID = this.props.entry.actionID;
         const entryRef = firebase.database().ref(`users/dylanon/log/${logID}`);
         const logRef = firebase.database().ref(`users/dylanon/log`);
-        let actionID = '';
-        // Get the action ID of the log entry we are deleting
-        entryRef.once('value', (snapshot) => {
-            actionID = snapshot.val().actionID;
-        })
+        // Delete the log entry
+        entryRef.remove()
         .then(() => {
-            // Delete the log entry
-            entryRef.remove()
-            .then(() => {
-                // Get the last log entry in the database that matches the action ID and store the timestamp
-                logRef.orderByChild('actionID').equalTo(actionID).limitToLast(1).once('value', (snapshot) => {
-                    const snapshotObject = snapshot.val();
-                    let lastCompleted = 0;
-                    // Unwrap an object nested within an object
-                    for (let property in snapshotObject) {
-                        lastCompleted = snapshotObject[property].timestamp;
-                    }
-                    // Update the 'Last Completed' time of the related action in the database
-                    firebase.database().ref(`users/dylanon/actions/${actionID}`).update({
-                        lastCompleted: lastCompleted
-                    });
+            // Get the last log entry in the database that matches the action ID and store the timestamp
+            logRef.orderByChild('actionID').equalTo(actionID).limitToLast(1).once('value', (snapshot) => {
+                const snapshotObject = snapshot.val();
+                let lastCompleted = 0;
+                // Unwrap an object nested within an object
+                for (let property in snapshotObject) {
+                    lastCompleted = snapshotObject[property].timestamp;
+                }
+                // Update the 'Last Completed' time of the related action in the database
+                firebase.database().ref(`users/dylanon/actions/${actionID}`).update({
+                    lastCompleted: lastCompleted
                 });
             });
         });
