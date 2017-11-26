@@ -25,7 +25,7 @@ class Log extends React.Component {
         }
         // Display the markup
         return (
-            <div>
+            <div className="log-container">
                 <h2>{logHeading}</h2>
                 {/* If the log has been filtered, show a link to reset */}
                 {this.props.filterBy.length > 0 &&
