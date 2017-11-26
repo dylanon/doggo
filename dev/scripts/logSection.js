@@ -41,6 +41,7 @@ class LogItem extends React.Component {
 
     handleDelete(e) {
         e.preventDefault();
+        e.stopPropagation();
         // Set up variables
         const logID = this.props.entry.logID;
         const entryRef = firebase.database().ref(`users/${this.props.userID}/log/${logID}`);
@@ -81,11 +82,8 @@ class LogItem extends React.Component {
     render() {
         const entry = this.props.entry;
         return (
-            <li className="log-card">
+            <li className="log-card" onClick={this.handleClick}>
                 <p>You completed: <span className="text-accent">{entry.actionName}</span></p>
-                {this.props.filterBy.length === 0 &&
-                    <p><a href="#" onClick={this.handleClick}>View history for this action only</a></p>
-                }
                 <p className="log-timestamp">{moment(entry.timestamp).format('h:mm a')}</p>
                 <div className="delete-control">
                     <a href="#" onClick={this.handleDelete} aria-label="Delete this entry permanently" title="Delete permanently"><i className="fa fa-times" aria-hidden="true"></i></a>
