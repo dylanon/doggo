@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Switch, Route } from 'react-router-dom';
 import firebase from './firebase';
 import moment from 'moment';
 import Header from './header';
@@ -159,7 +159,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render((
-  <BrowserRouter>
+  <HashRouter>
     <App />
-  </BrowserRouter>
+  </HashRouter>
 ), document.getElementById('app'));
