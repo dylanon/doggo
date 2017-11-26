@@ -65,9 +65,15 @@ class LogItem extends React.Component {
             for (let property in snapshotObject) {
                 lastCompleted = snapshotObject[property].timestamp;
             }
-            // Update the 'Last Completed' time of the related action in the database
-            firebase.database().ref(`users/${this.props.userID}/actions/${actionID}`).update({
-                lastCompleted: lastCompleted
+            // Check if the action still exists - only update 'Last Completed' if it does
+            const actionRef = firebase.database().ref(`users/${this.props.userID}/actions/${actionID}`);
+            actionRef.once('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    // Update the 'Last Completed' time of the related action in the database
+                    actionRef.update({
+                        lastCompleted: lastCompleted
+                    });
+                }
             });
         });
     }
