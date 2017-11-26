@@ -14,19 +14,27 @@
     border-radius: 5px;
     flex-basis: 25%;
     flex-grow: 1;
-    padding: $base-spacing-rem;
+    padding: $base-spacing-rem $base-spacing-rem $base-spacing-rem/4 $base-spacing-rem;
     margin: $base-spacing / 2;
 
     h3 {
-        margin: $base-spacing-rem/2 0 $base-spacing-rem 0;
+        margin: 0;
     }
 
     p {
         margin: $base-spacing-rem/2 0;
     }
 
+    .last-completed {
+        margin: $base-spacing-rem 0;
+    }
+
     &:hover {
         cursor: pointer;
+
+        .action-instruction{
+            color: $primary-color;
+        }
 
         .delete-action {
             opacity: 1;
@@ -34,10 +42,18 @@
     }
 }
 
+.action-description {
+    font: {
+        weight: 300;
+    }
+}
+
+
 .action-instruction {
     text-transform: uppercase;
-    position: relative;
-    top: $base-spacing-rem;
+    font: {
+        size: 1.1rem;
+    }
 }
 
 .delete-action {

@@ -24,6 +24,10 @@ li {
     list-style: none;
 }
 
+.text-accent {
+    color: $primary-color;
+}
+
 .wrapper {
     max-width: 800px;
     margin: 0 auto;
