@@ -18,10 +18,10 @@
 ## Stretch Goals
 
 - User 'creates' dog(s) (name, breed, age)
-- Allow edit/deletion of logs
+- **Done**: Allow deletion of logs
 - Allow 'archiving' and 'unarchiving' of actions (don't delete your actions, just hide from view until you want to continue tracking it)
-- User logs in with Google account
-- Private user data (each logged in user manages their own dogs)
+- **Done**: User logs in with Google account
+- **Done**: Private user data (each logged in user manages their own dogs)
 - Share + collaborate on a dog with another user (Invite process & shared data access)
 - Allow upload for photo of your dog
 - Recognize dog breed from photo using [Google Cloud Vision API](https://cloud.google.com/vision/)
