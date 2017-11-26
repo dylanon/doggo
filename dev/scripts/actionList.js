@@ -53,14 +53,16 @@ class ActionList extends React.Component {
             }
             // Generate the markup
             return (
-              <li key={action.key} className="action-card">
-                <p>{action.name} | <span>{action.description}</span></p>
-                <p>Last completed: {lastCompletedString}</p>
-                <a href="#" onClick={(e) => {
+              <li key={action.key} className="action-card" 
+                onClick={(e) => {
                   e.preventDefault();
                   this.handleClick(action.key, action.name)
-                  }}>Complete Action (add to log)</a> | 
+                }}>
+                <h3>{action.name}</h3>
+                <p className="action-description">{action.description}</p>
+                <p className="last-completed">Last completed: {lastCompletedString}</p>
                 <a href="#" id="delete-action" data-delete={action.key} onClick={this.handleDelete}>(Delete)</a>
+                <p className="action-instruction">Tap to complete</p>
               </li>
             )
           })}
