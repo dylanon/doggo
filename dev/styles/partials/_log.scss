@@ -3,3 +3,7 @@
 .log-container {
     text-align: center;
 }
+
+.log-card {
+    @extend .card;
+}

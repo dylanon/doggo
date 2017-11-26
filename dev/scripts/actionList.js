@@ -62,7 +62,7 @@ class ActionList extends React.Component {
                 <h3>{action.name}</h3>
                 <p className="action-description">{action.description}</p>
                 <p className="last-completed">Last completed: <span className="text-accent">{lastCompletedString}</span></p>
-                <div className="delete-action">
+                <div className="delete-control">
                   <a href="#" data-delete={action.key} onClick={this.handleDelete} aria-label="Delete this action permanently" title="Delete permanently"><i className="fa fa-times" aria-hidden="true"></i></a>
                 </div>
                 <p className="action-instruction">Tap to complete</p>

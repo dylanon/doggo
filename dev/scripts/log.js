@@ -29,7 +29,7 @@ class Log extends React.Component {
                 <h2>{logHeading}</h2>
                 {/* If the log has been filtered, show a link to reset */}
                 {this.props.filterBy.length > 0 &&
-                    <a href="#" onClick={this.props.resetFilter}>Display all actions</a>
+                    <a href="#" onClick={this.props.resetFilter}>View full history (all actions)</a>
                 }
                 {/* Map over the array of unique dates, display a section for each */}
                 {uniqueDates.map((date) => {

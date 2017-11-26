@@ -81,13 +81,15 @@ class LogItem extends React.Component {
     render() {
         const entry = this.props.entry;
         return (
-            <li>
+            <li className="log-card">
                 <p>You completed: {entry.actionName}</p>
                 <p>{moment(entry.timestamp).format('h:mm a')}</p>
                 {this.props.filterBy.length === 0 &&
-                    <p><a href="#" onClick={this.handleClick}>View log for this action only</a></p>
+                    <p><a href="#" onClick={this.handleClick}>View history for this action only</a></p>
                 }
-                <p><a href="#" onClick={this.handleDelete}>(Delete this entry)</a></p>
+                <div className="delete-control">
+                    <a href="#" onClick={this.handleDelete} aria-label="Delete this entry permanently" title="Delete permanently"><i className="fa fa-times" aria-hidden="true"></i></a>
+                </div>
             </li>
         )
     }

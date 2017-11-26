@@ -28,6 +28,43 @@ li {
     list-style: none;
 }
 
+.card {
+    position: relative;
+    text-align: center;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        cursor: pointer;
+        
+        .delete-control {
+            opacity: 1;
+        }        
+    }
+}
+
+.delete-control {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    background: black;
+    border-radius: 50%;
+    font-size: 1rem;
+    height: 2em;
+    width: 2em;
+    display: flex;
+    // Hide by default
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    
+    a {
+        color: white;
+        margin: auto;
+    }
+}
+
 .text-accent {
     color: $primary-color;
 }
