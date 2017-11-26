@@ -27,12 +27,15 @@
 
     &:hover {
         cursor: pointer;
+
+        .delete-action {
+            opacity: 1;
+        }        
     }
 }
 
 .action-instruction {
     text-transform: uppercase;
-    // text-align: center;
     position: relative;
     top: $base-spacing-rem;
 }
@@ -48,6 +51,9 @@
     height: 2em;
     width: 2em;
     display: flex;
+    // Hide by default
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
     
     a {
         color: white;
