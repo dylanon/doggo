@@ -6,4 +6,6 @@
 
 .log-card {
     @extend .card;
+    width: 400px;
+    margin: 0 auto $base-spacing auto;
 }
