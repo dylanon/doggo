@@ -1,0 +1,32 @@
+/* Action Form Component */
+
+#create-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    input {
+        width: 100%;
+    }
+
+    button {
+        padding: $base-spacing/2 $base-spacing;
+        color: white;
+        background: $primary-color;
+        border: 1px solid white;
+        border-radius: 5px;
+
+        // Hover states for button
+        // &:hover,
+        // &:focus {
+        //     color: $primary-color;
+        //     background: white;
+        //     border: 1px solid $primary-color;
+        // }
+    }
+}
+
+.input-group {
+    margin-right: $base-spacing * 2;
+    flex-grow: 1;
+}

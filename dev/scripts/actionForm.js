@@ -40,10 +40,14 @@ class ActionForm extends React.Component {
         <div>
             <h2>Create an action</h2>
             <form action="" id="create-action" onSubmit={this.handleSubmit}>
-            <label htmlFor="new-action-name">Action Name:</label>
-            <input type="text" id="new-action-name" name="actionName" onChange={this.handleChange} value={this.state.actionName} />
-            <label htmlFor="new-action-description">Description (optional):</label>
-            <input type="text" id="new-action-description" name="actionDescription" onChange={this.handleChange} value={this.state.actionDescription} />
+            <div className="input-group">
+                <label htmlFor="new-action-name">Action Name:</label>
+                <input type="text" id="new-action-name" name="actionName" onChange={this.handleChange} value={this.state.actionName} required />
+            </div>
+            <div className="input-group">
+                <label htmlFor="new-action-description">Description (optional):</label>
+                <input type="text" id="new-action-description" name="actionDescription" onChange={this.handleChange} value={this.state.actionDescription} />
+            </div>
             <button type="submit">Create</button>
             </form>
         </div>

@@ -3,9 +3,10 @@
 $font-size: 1.6rem;
 $base-spacing: 16px;
 $max-width: 800px;
-$navbar-bg: tomato;
+$primary-color: tomato;
 
 // Imports
 @import 'partials/setup';
 @import 'partials/globals';
 @import 'partials/header';
+@import 'partials/actionForm';
