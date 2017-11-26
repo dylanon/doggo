@@ -7,5 +7,17 @@
 .log-card {
     @extend .card;
     width: 400px;
-    margin: 0 auto $base-spacing auto;
+    margin: 0 auto $base-spacing*2.5 auto;
+}
+
+.log-timestamp {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(130%);
+    margin: 0;
+    font: {
+        size: 1.4rem;
+        weight: 300;
+    }
 }
