@@ -8,8 +8,8 @@ const Header = (props) => {
                 <div className="wrapper">
                     <div className="logo">
                         <Link to='/'>
-                            <h1>doggo</h1>
-                            <p className="tagline">The dog care tracker</p>
+                            <h1 className="site-title">doggo</h1>
+                            <p className="tagline">Keep track of your pooch</p>
                         </Link>
                     </div>
                         {props.loggedIn ? (

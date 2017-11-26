@@ -1,5 +1,6 @@
 // Variables
 
+$font: 'Roboto', sans-serif;
 $font-size: 1.6rem;
 $base-spacing: 16px;
 $base-spacing-rem: 1.6rem;
@@ -8,6 +9,7 @@ $primary-color: rgb(145, 84, 0);
 
 // Imports
 @import 'partials/setup';
+@import 'partials/mixins';
 @import 'partials/globals';
 @import 'partials/header';
 @import 'partials/actionForm';
