@@ -1,8 +1,7 @@
-// body {
-//     background: #000000;
-//     color: #f1f1f1;
-// }
+// Variables
 
-// a {
-//     color: lightgreen;
-// }
+$font-size: 1.6rem;
+
+// Imports
+@import 'partials/setup';
+@import 'partials/globals';
