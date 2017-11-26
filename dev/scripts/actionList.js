@@ -42,7 +42,7 @@ class ActionList extends React.Component {
     return (
       <div>
         <h2>Actions</h2>
-        <ul>
+        <ul className="action-list">
           {this.props.storedActions.map(action => {
             // Generate the 'last completed' text
             let lastCompletedString = '';
@@ -53,7 +53,7 @@ class ActionList extends React.Component {
             }
             // Generate the markup
             return (
-              <li key={action.key}>
+              <li key={action.key} className="action-card">
                 <p>{action.name} | <span>{action.description}</span></p>
                 <p>Last completed: {lastCompletedString}</p>
                 <a href="#" onClick={(e) => {

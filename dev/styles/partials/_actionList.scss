@@ -1,0 +1,21 @@
+/* Action List Component */
+
+.action-list {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: $base-spacing * -1;
+    margin-right: $base-spacing * -1;
+}
+
+.action-card {
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    flex-basis: 25%;
+    flex-grow: 1;
+    padding: $base-spacing;
+    margin: $base-spacing / 2;
+    
+    p {
+        margin: 0;
+    }
+}
