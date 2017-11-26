@@ -62,7 +62,9 @@ class ActionList extends React.Component {
                 <h3>{action.name}</h3>
                 <p className="action-description">{action.description}</p>
                 <p className="last-completed">Last completed: {lastCompletedString}</p>
-                <a href="#" className="delete-action" data-delete={action.key} onClick={this.handleDelete}>X</a>
+                <div className="delete-action">
+                  <a href="#" data-delete={action.key} onClick={this.handleDelete}>X</a>
+                </div>
                 <p className="action-instruction">Tap to complete</p>
               </li>
             )

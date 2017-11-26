@@ -42,5 +42,15 @@
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
-    display: block;
+    background: black;
+    border-radius: 50%;
+    font-size: 1rem;
+    height: 2em;
+    width: 2em;
+    display: flex;
+    
+    a {
+        color: white;
+        margin: auto;
+    }
 }
