@@ -19,7 +19,7 @@ class Log extends React.Component {
             }
         });
         // Build the log heading text
-        let logHeading = 'Log';
+        let logHeading = 'History';
         if (this.props.filterBy.length > 0) {
             logHeading = logHeading + `: ${this.props.filterByName}`;
         }

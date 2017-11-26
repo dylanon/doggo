@@ -147,7 +147,7 @@ class App extends React.Component {
                   </div>
                 )
               }} />
-              <Route path='/log' render={(routeProps) => {
+              <Route path='/history' render={(routeProps) => {
                 return <Log {...routeProps} userID={this.state.userID} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter}/>
               }} />
             </Switch>
