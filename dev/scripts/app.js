@@ -134,22 +134,24 @@ class App extends React.Component {
       <div>
         <Header logIn={this.logIn} logOut={this.logOut} loggedIn={this.state.loggedIn}/>
         <main>
-          <Switch>
-            <Route exact path='/' render={(routeProps) => {
-              return (
-                <div>
-                  {this.state.loggedIn ? (
-                    <Actions {...routeProps} userID={this.state.userID} storedActions={this.state.actions} /> 
-                  ) : (
-                    <a href="#" onClick={this.logIn}>Log In</a>
-                  )}
-                </div>
-              )
-            }} />
-            <Route path='/log' render={(routeProps) => {
-              return <Log {...routeProps} userID={this.state.userID} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter}/>
-            }} />
-          </Switch>
+          <div className="wrapper">
+            <Switch>
+              <Route exact path='/' render={(routeProps) => {
+                return (
+                  <div>
+                    {this.state.loggedIn ? (
+                      <Actions {...routeProps} userID={this.state.userID} storedActions={this.state.actions} /> 
+                    ) : (
+                      <a href="#" onClick={this.logIn}>Log In</a>
+                    )}
+                  </div>
+                )
+              }} />
+              <Route path='/log' render={(routeProps) => {
+                return <Log {...routeProps} userID={this.state.userID} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter}/>
+              }} />
+            </Switch>
+          </div>
         </main>
       </div>
     )

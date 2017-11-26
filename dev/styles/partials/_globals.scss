@@ -9,3 +9,9 @@ body {
         size: $font-size;
     }
 }
+
+.wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 $base-spacing;
+}
