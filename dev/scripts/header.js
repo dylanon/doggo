@@ -8,7 +8,7 @@ const Header = (props) => {
                 <div className="wrapper">
                     <div className="logo">
                         <Link to='/'>
-                            <h1 className="site-title"><i class="fa fa-paw" aria-hidden="true"></i> doggo</h1>
+                            <h1 className="site-title"><i className="fa fa-paw" aria-hidden="true"></i> doggo</h1>
                             <p className="tagline">Keep track of your pooch</p>
                         </Link>
                     </div>
