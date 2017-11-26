@@ -13,6 +13,8 @@
     flex-grow: 1;
     padding: $base-spacing-rem $base-spacing-rem $base-spacing-rem/4 $base-spacing-rem;
     margin: $base-spacing / 2;
+    display: flex;
+    flex-flow: column nowrap;
 
     h3 {
         margin: 0;
@@ -22,8 +24,18 @@
         margin: $base-spacing-rem/2 0;
     }
 
+    // Nested to overide p style
     .last-completed {
-        margin: $base-spacing-rem 0;
+        margin-bottom: $base-spacing-rem;
+    }
+
+    // Nested to overide p style
+    .action-instruction {
+        text-transform: uppercase;
+        font: {
+            size: 1.1rem;
+        }
+        margin-top: auto;
     }
 
     &:hover {
@@ -39,10 +51,3 @@
     }
 }
 
-
-.action-instruction {
-    text-transform: uppercase;
-    font: {
-        size: 1.1rem;
-    }
-}
