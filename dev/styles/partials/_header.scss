@@ -1,9 +1,25 @@
 /* HEADER */
 
-header {
+.navbar {
     background: $navbar-bg;
+    padding: $base-spacing/2 0;
 
     h1 {
         margin: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    li {
+        display: inline-block;
+        padding-left: $base-spacing;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }

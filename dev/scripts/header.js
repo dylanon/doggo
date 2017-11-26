@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 const Header = (props) => {
     return (
         <header>
-            <div className="wrapper">
-                <nav className="navbar">
-                    <h1>dogLog: Dog care tracker</h1>
+            <nav className="navbar">
+                <div className="wrapper">
+                    <div className="logo">
+                        <h1>doggo</h1>
+                        <p className="tagline">The dog care tracker</p>
+                    </div>
                         {props.loggedIn ? (
                             <ul>
                                 <li><Link to='/'>Home</Link></li>
@@ -18,8 +21,8 @@ const Header = (props) => {
                                 <li><a href="#" onClick={props.logIn}>Log In</a></li>
                             </ul>
                         )}
-                </nav>
-            </div>
+                </div>
+            </nav>
         </header>
     )
 }
