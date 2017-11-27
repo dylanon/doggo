@@ -7,6 +7,10 @@
 
     input {
         width: 100%;
+        border: 1px solid rgb(207, 207, 207);
+        border-radius: 5px;
+        margin: $base-spacing 0;
+        padding: $base-spacing-rem/2 $base-spacing-rem/1.5;
     }
 
     @media (max-width: 480px) {
