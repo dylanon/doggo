@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = (props) => {
+    let headerClass = '';
+    if (props.loggedIn === false) {
+        headerClass = 'fixed-header';
+    }
     return (
-        <header>
+        <header className={headerClass}>
             <nav className="navbar">
                 <div className="wrapper">
                     <div className="logo">

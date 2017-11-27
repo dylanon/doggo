@@ -4,6 +4,11 @@ header {
     z-index: 10;
 }
 
+.fixed-header {
+    position: fixed;
+    width: 100%;
+}
+
 .navbar {
     background: $primary-color;
     color: white;
