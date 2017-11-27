@@ -8,6 +8,10 @@
     @extend .card;
     width: 400px;
     margin: 0 auto $base-spacing*2.5 auto;
+
+    @media (max-width: 480px) {
+        width: 100%;
+    }
 }
 
 .log-timestamp {
