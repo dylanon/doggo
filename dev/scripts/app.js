@@ -46,8 +46,7 @@ class App extends React.Component {
     .then((result) => {
       this.setState({
         loggedIn: true,
-        userID: result.user.uid,
-        navToggleClass: ''
+        userID: result.user.uid
       });
     });
   }
@@ -57,10 +56,6 @@ class App extends React.Component {
     firebase.auth().signOut()
     .then(function() {
       console.log('sign out successful');
-    });
-    // Close the mobile nav
-    this.setState({
-      navToggleClass: ''
     });
   }
 

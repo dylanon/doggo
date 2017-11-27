@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = (props) => {
+    // If the user is not logged in, make the home page nav menu fixed for aesthetics
     let headerClass = '';
     if (props.loggedIn === false) {
         headerClass = 'fixed-header';
@@ -20,13 +21,13 @@ const Header = (props) => {
                         </div>
                     </div>
                     {props.loggedIn ? (
-                        <ul className={props.navToggleClass}>
+                        <ul className={props.navToggleClass} onClick={props.toggleNav}>
                             <li><Link to='/'>Actions</Link></li>
                             <li><Link to='/history'>History</Link></li>
                             <li><a href="#" onClick={props.logOut}>Sign Out</a></li>
                         </ul>
                     ) : (
-                        <ul className={props.navToggleClass}>
+                        <ul className={props.navToggleClass} onClick={props.toggleNav}>
                             <li><a href="#" onClick={props.logIn}>Sign In</a></li>
                         </ul>
                     )}
