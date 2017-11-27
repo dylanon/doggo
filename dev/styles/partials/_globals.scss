@@ -32,6 +32,22 @@ a {
     color: $primary-color;
 }
 
+button {
+    padding: $base-spacing/2 $base-spacing;
+    color: white;
+    background: $primary-color;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    // Hover states for button
+    // &:hover,
+    // &:focus {
+    //     color: $primary-color;
+    //     background: white;
+    //     border: 1px solid $primary-color;
+    // }
+}
+
 ul {
     padding: 0;
 }

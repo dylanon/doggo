@@ -148,7 +148,7 @@ class App extends React.Component {
             </div>
           </main>
         ) : (
-          <PublicHome />
+          <PublicHome logIn={this.logIn} />
         )}
       </div>
     )

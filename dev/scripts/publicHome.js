@@ -4,7 +4,7 @@ class PublicHome extends React.Component {
     render() {
         return (
             <main className="public-main">
-                <p>Hello world</p>
+                <button onClick={this.props.logIn}>Sign in with Google <i className="fa fa-paw"></i></button>
             </main>
         )
     }

@@ -4,4 +4,12 @@
     background: url(../assets/abby.jpg) center/cover no-repeat;
     margin: 0;
     flex-grow: 1;
+    position: relative;
+
+    button {
+        position: absolute;
+        bottom: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
