@@ -12,10 +12,15 @@
         margin: $base-spacing 0 0 0;
         padding: $base-spacing-rem/2.2 $base-spacing-rem/1.5;
     }
-
-    @media (max-width: 480px) {
+    
+    @media (max-width: 600px) {
         flex-flow: column nowrap;
         align-items: stretch;
+
+        button {
+            margin-top: $base-spacing;
+            margin-bottom: $base-spacing;
+        }
     }
 }
 
@@ -23,7 +28,7 @@
     margin-right: $base-spacing * 2;
     flex-grow: 1;
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
         margin: 0 0 $base-spacing 0;
     }
 }
