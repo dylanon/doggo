@@ -24,10 +24,8 @@ class ActionList extends React.Component {
     this.setLastCompleted(actionID, timestamp);
   }
 
-  handleDelete(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const deleteID = e.target.getAttribute('data-delete');
+  handleDelete(actionID) {
+    const deleteID = actionID;
     const deleteRef = firebase.database().ref(`users/${this.props.userID}/actions/${deleteID}`)
     deleteRef.remove();
   }
@@ -63,7 +61,11 @@ class ActionList extends React.Component {
                 <p className="action-description">{action.description}</p>
                 <p className="last-completed">Last completed: <span className="text-accent">{lastCompletedString}</span></p>
                 <div className="delete-control">
-                  <a href="#" data-delete={action.key} onClick={this.handleDelete} aria-label="Delete this action permanently" title="Delete permanently"><i className="fa fa-times" aria-hidden="true"></i></a>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.handleDelete(action.key);
+                    }} aria-label="Delete this action permanently" title="Delete permanently"><i className="fa fa-times" aria-hidden="true"></i></a>
                 </div>
                 <p className="action-instruction">Tap to complete</p>
               </li>
