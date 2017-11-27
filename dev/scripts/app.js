@@ -42,7 +42,7 @@ class App extends React.Component {
   logIn(e) {
     e.preventDefault();
     const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithRedirect(provider)
     .then((result) => {
       this.setState({
         loggedIn: true,
