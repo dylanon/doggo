@@ -16,11 +16,11 @@ const Header = (props) => {
                             <ul>
                                 <li><Link to='/'>Actions</Link></li>
                                 <li><Link to='/history'>History</Link></li>
-                                <li><a href="#" onClick={props.logOut}>Log Out</a></li>
+                                <li><a href="#" onClick={props.logOut}>Sign Out</a></li>
                             </ul>
                         ) : (
                             <ul>
-                                <li><a href="#" onClick={props.logIn}>Log In</a></li>
+                                <li><a href="#" onClick={props.logIn}>Sign In</a></li>
                             </ul>
                         )}
                 </div>
