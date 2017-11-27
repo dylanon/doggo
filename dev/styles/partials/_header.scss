@@ -1,8 +1,13 @@
 /* HEADER */
 
+header {
+    z-index: 10;
+}
+
 .navbar {
     background: $primary-color;
     padding-top: 3px;
+    box-shadow: 0px 2px 1px rgba(0,0,0, 0.5);
 
     a {
         color: white;
