@@ -17,11 +17,13 @@ class App extends React.Component {
       filterBy: '',
       filterByName: '',
       loggedIn: false,
-      userID: ''
+      userID: '',
+      navToggleClass: ''
     }
     this.filterLog = this.filterLog.bind(this);
     this.resetFilter = this.resetFilter.bind(this);
     this.logIn = this.logIn.bind(this);
+    this.toggleNav = this.toggleNav.bind(this);
   }
 
   filterLog(actionID, actionName) {
@@ -54,6 +56,18 @@ class App extends React.Component {
     .then(function() {
       console.log('sign out successful');
     });
+  }
+
+  toggleNav() {
+    if (this.state.navToggleClass.length > 1) {
+      this.setState({
+        navToggleClass: ''
+      });
+    } else {
+      this.setState({
+        navToggleClass: 'nav-active'
+      });
+    }
   }
 
   componentDidMount() {
@@ -133,7 +147,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-wrapper">
-        <Header logIn={this.logIn} logOut={this.logOut} loggedIn={this.state.loggedIn}/>
+        <Header logIn={this.logIn} logOut={this.logOut} loggedIn={this.state.loggedIn} toggleNav={this.toggleNav} navToggleClass={this.state.navToggleClass} />
         {this.state.loggedIn ? (
           <main>
             <div className="wrapper">

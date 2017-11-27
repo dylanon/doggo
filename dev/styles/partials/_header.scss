@@ -47,7 +47,11 @@ header {
         ul {
             width: 100%;
             text-align: center;
-            // display: none;
+            display: none;
+        }
+
+        ul.nav-active {
+            display: block;
         }
 
         a {
@@ -110,6 +114,11 @@ header {
 .nav-toggle {
     display: none;
     font-size: 20px;
+    padding: 8px 0px 8px 16px;
+
+    &:hover {
+        cursor: pointer;
+    }
 
     @media (max-width: 480px) {
         display: block;
