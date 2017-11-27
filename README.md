@@ -12,7 +12,6 @@
 
 ## Parked Issues
 
-- Log still shows even when logged out
 - Delete control icon is off-centre in history view only
 - Inconsistent prop naming when passing to child components
 
