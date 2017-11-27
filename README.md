@@ -1,4 +1,4 @@
-# dogLog: Dog care tracker
+# doggo: Dog care tracker
 
 ## Basic Functionality / Pseudocode
 
