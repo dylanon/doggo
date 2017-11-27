@@ -2,13 +2,25 @@
 
 html {
     font-size: 10px / 16px * 100%;
+    height: 100%;
 }
 
 body {
+    height: 100%;
     font: {
         size: $font-size;
         family: $font;
     }
+}
+
+#app {
+    min-height: 100vh;
+}
+
+.app-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 100vh;
 }
 
 main {

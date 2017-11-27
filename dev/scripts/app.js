@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { HashRouter, BrowserRouter, Switch, Route } from 'react-router-dom';
 import firebase from './firebase';
 import moment from 'moment';
+import PublicHome from './publicHome';
 import Header from './header';
 import Actions from './actions';
 import Log from './log';
@@ -131,7 +132,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="app-wrapper">
         <Header logIn={this.logIn} logOut={this.logOut} loggedIn={this.state.loggedIn}/>
         {this.state.loggedIn ? (
           <main>
@@ -147,9 +148,7 @@ class App extends React.Component {
             </div>
           </main>
         ) : (
-          <main>
-            <a href="#" onClick={this.logIn}>Log In</a>
-          </main>
+          <PublicHome />
         )}
       </div>
     )
