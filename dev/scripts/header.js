@@ -11,18 +11,21 @@ const Header = (props) => {
                             <h1 className="site-title"><i className="fa fa-paw" aria-hidden="true"></i> doggo</h1>
                             <p className="tagline">Keep track of your pooch</p>
                         </Link>
+                        <div className="nav-toggle">
+                            <i className="fa fa-bars"></i>
+                        </div>
                     </div>
-                        {props.loggedIn ? (
-                            <ul>
-                                <li><Link to='/'>Actions</Link></li>
-                                <li><Link to='/history'>History</Link></li>
-                                <li><a href="#" onClick={props.logOut}>Sign Out</a></li>
-                            </ul>
-                        ) : (
-                            <ul>
-                                <li><a href="#" onClick={props.logIn}>Sign In</a></li>
-                            </ul>
-                        )}
+                    {props.loggedIn ? (
+                        <ul>
+                            <li><Link to='/'>Actions</Link></li>
+                            <li><Link to='/history'>History</Link></li>
+                            <li><a href="#" onClick={props.logOut}>Sign Out</a></li>
+                        </ul>
+                    ) : (
+                        <ul>
+                            <li><a href="#" onClick={props.logIn}>Sign In</a></li>
+                        </ul>
+                    )}
                 </div>
             </nav>
         </header>
