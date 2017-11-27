@@ -11,6 +11,11 @@ const autoprefixer = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
 const concat = require('gulp-concat');
 
+gulp.task('assets', () => {
+	return gulp.src('./dev/assets/*')
+	.pipe(gulp.dest('./public/assets'))
+});
+
 gulp.task('styles', () => {
 	return gulp.src('./dev/styles/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
@@ -44,8 +49,9 @@ gulp.task('bs', () => {
 	});
 });
 
-gulp.task('default', ['js','styles','bs'], () => {
+gulp.task('default', ['js','styles','assets','bs'], () => {
 	gulp.watch('dev/**/*.js',['js']);
 	gulp.watch('dev/**/*.scss',['styles']);
+	gulp.watch('dev/assets/*',['assets'],reload);
 	gulp.watch('./public/styles/style.css',reload);
 });
