@@ -8,9 +8,18 @@
     input {
         width: 100%;
     }
+
+    @media (max-width: 480px) {
+        flex-flow: column nowrap;
+        align-items: stretch;
+    }
 }
 
 .input-group {
     margin-right: $base-spacing * 2;
     flex-grow: 1;
+
+    @media (max-width: 480px) {
+        margin: 0 0 $base-spacing 0;
+    }
 }

@@ -5,6 +5,10 @@
     flex-flow: row wrap;
     margin-left: $base-spacing * -1;
     margin-right: $base-spacing * -1;
+
+    @media (max-width: 480px) {
+        flex-flow: column nowrap;
+    }
 }
 
 .action-card {
@@ -42,6 +46,10 @@
         .action-instruction{
             color: $primary-color;
         }
+    }
+
+    @media (max-width: 600px) {
+        flex-basis: 40%;
     }
 }
 
