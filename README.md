@@ -15,13 +15,24 @@
 - Delete control icon is off-centre in history view only
 - Inconsistent prop naming when passing to child components
 
-## Stretch Goals
+## Enhancements
 
+- Asynchronous events
+  - Prevent splash page flicker - Wait to render page until authentication status comes back
+  - Add loading animations for all API requests
+- Transitions
+  - Subtle fade effects when mounting/unmounting components
+- Instructions
+  - When no actions exist, should guide the user on how to create
+  - When no history exists (no action have been completed), should guide the user on how to add to the history
+- User/password sign up and login
+  - Should link up with federated identities (Google Sign-In)
+  - Should allow password reset
 - User 'creates' dog(s) (name, breed, age)
-- **Done**: Allow deletion of logs
+  - Allow upload for photo of dog
+  - Recognize dog breed from photo using [Google Cloud Vision API](https://cloud.google.com/vision/)
+- Share + collaborate on a dog with another user (Invite process & shared data access)
 - Allow 'archiving' and 'unarchiving' of actions (don't delete your actions, just hide from view until you want to continue tracking it)
+- **Done**: Allow deletion of logs
 - **Done**: User logs in with Google account
 - **Done**: Private user data (each logged in user manages their own dogs)
-- Share + collaborate on a dog with another user (Invite process & shared data access)
-- Allow upload for photo of your dog
-- Recognize dog breed from photo using [Google Cloud Vision API](https://cloud.google.com/vision/)
