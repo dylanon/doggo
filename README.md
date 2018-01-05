@@ -18,7 +18,7 @@
 ## Enhancements
 
 - Asynchronous events
-  - Prevent splash page flicker - Wait to render page until authentication status comes back
+  - **Done** Show loader while retrieving auth information
   - Add loading animations for all API requests
 - Transitions
   - Subtle fade effects when mounting/unmounting components
