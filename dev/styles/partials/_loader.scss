@@ -1,0 +1,52 @@
+/* LOADER */
+
+.loader {
+    margin: auto;
+    text-align: center;
+    color: $primary-color;
+
+    &::before {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        height: 3em;
+        width: 3em;
+        border-radius: 50%;
+        border: 2px solid $primary-color;
+        border-left: 0;
+        border-right: 0;
+        animation: spinLoader 0.7s infinite;
+
+    }
+
+    p {
+        @include fontLobster;
+        font-size: 3.6rem;
+        margin: 0.4em 0 0 0;
+        animation: pulse 2.5s 2s infinite;
+    }
+}
+
+@keyframes spinLoader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    5% {
+        transform: scale(1.05);
+    }
+    10% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
