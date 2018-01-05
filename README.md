@@ -19,7 +19,7 @@
 
 - Asynchronous events
   - **Done** Show loader while retrieving auth information
-  - Add loading animations for all API requests
+  - **Done (simplified)** Add loading animations for all API requests
 - Transitions
   - Subtle fade effects when mounting/unmounting components
 - Instructions
