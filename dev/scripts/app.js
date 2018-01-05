@@ -60,6 +60,8 @@ class App extends React.Component {
     firebase.auth().signOut()
     .then(function() {
       console.log('sign out successful');
+      // Refresh the browser from its cache
+      document.location.reload(false);
     });
   }
 
@@ -160,16 +162,16 @@ class App extends React.Component {
 
   render() {
     // Track if Firebase data has been loaded
-    let ready;
-    if (this.state.authLoaded && this.state.actionsLoaded && this.state.logLoaded) {
-      ready = true;
+    let dataLoaded;
+    if (this.state.actionsLoaded && this.state.logLoaded) {
+      dataLoaded = true;
     } else {
-      ready = false;
+      dataLoaded = false;
     }
 
     // Build the content
     let content;
-    if (ready && this.state.loggedIn) {
+    if (this.state.authLoaded && this.state.loggedIn && dataLoaded) {
       // Show the logged in view with app data
       content = (
         <main>
@@ -185,7 +187,7 @@ class App extends React.Component {
           </div>
         </main>
       );
-    } else if (ready && !this.state.loggedIn) {
+    } else if (this.state.authLoaded && !this.state.loggedIn) {
       // Show the public home page
       content = <PublicHome logIn={this.logIn} />;
     } else {
