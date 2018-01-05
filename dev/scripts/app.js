@@ -179,16 +179,14 @@ class App extends React.Component {
     }
 
     return (
-      <div className="app-wrapper">
-        <Header logIn={this.logIn} logOut={this.logOut} loggedIn={this.state.loggedIn} toggleNav={this.toggleNav} navToggleClass={this.state.navToggleClass} />
-        {content}
-      </div>
+      <BrowserRouter>
+        <div className="app-wrapper">
+          <Header logIn={this.logIn} logOut={this.logOut} loggedIn={this.state.loggedIn} toggleNav={this.toggleNav} navToggleClass={this.state.navToggleClass} />
+          {content}
+        </div>
+      </BrowserRouter>
     )
   }
 }
 
-ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.getElementById('app'));
+ReactDOM.render(<App /> , document.getElementById('app'));
