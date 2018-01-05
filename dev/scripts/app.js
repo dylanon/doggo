@@ -15,7 +15,9 @@ class App extends React.Component {
     this.state = {
       authLoaded: false,
       actions: [],
+      actionsLoaded: false,
       log: [],
+      logLoaded: false,
       filterBy: '',
       filterByName: '',
       loggedIn: false,
@@ -101,7 +103,8 @@ class App extends React.Component {
         }
         // Update the state
         this.setState({
-          actions: newState
+          actions: newState,
+          actionsLoaded: true
         });
       }, (error) => {
         console.log('Could not retrieve actions.', error); 
@@ -133,6 +136,7 @@ class App extends React.Component {
           // Update the state
           this.setState({
               log: tempLog,
+              logLoaded: true
           });
       }, (error) => {
         console.log('Could not retrieve history.', error);
@@ -155,8 +159,17 @@ class App extends React.Component {
   }
 
   render() {
+    // Track if Firebase data has been loaded
+    let ready;
+    if (this.state.authLoaded && this.state.actionsLoaded && this.state.logLoaded) {
+      ready = true;
+    } else {
+      ready = false;
+    }
+
+    // Build the content
     let content;
-    if (this.state.authLoaded && this.state.loggedIn) {
+    if (ready && this.state.loggedIn) {
       // Show the logged in view with app data
       content = (
         <main>
@@ -172,7 +185,7 @@ class App extends React.Component {
           </div>
         </main>
       );
-    } else if (this.state.authLoaded && !this.state.loggedIn) {
+    } else if (ready && !this.state.loggedIn) {
       // Show the public home page
       content = <PublicHome logIn={this.logIn} />;
     } else {
