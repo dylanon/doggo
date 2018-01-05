@@ -103,6 +103,8 @@ class App extends React.Component {
         this.setState({
           actions: newState
         });
+      }, (error) => {
+        console.log('Could not retrieve actions.', error); 
       });
     }
 
@@ -132,6 +134,8 @@ class App extends React.Component {
           this.setState({
               log: tempLog,
           });
+      }, (error) => {
+        console.log('Could not retrieve history.', error);
       });
     }
 
@@ -144,6 +148,8 @@ class App extends React.Component {
       } else {
         setLogInState(false, '');
       }
+    }, (error) => {
+      console.log('Auth error.', error);
     });
 
   }
