@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import firebase from './firebase';
 import moment from 'moment';
 import PublicHome from './publicHome';
+import Loader from './loader';
 import Header from './header';
 import Actions from './actions';
 import Log from './log';
@@ -12,6 +13,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      authLoaded: false,
       actions: [],
       log: [],
       filterBy: '',
@@ -77,7 +79,8 @@ class App extends React.Component {
     const setLogInState = (logInBoolean, userID) => {
       this.setState({
         loggedIn: logInBoolean,
-        userID: userID
+        userID: userID,
+        authLoaded: true
       });
     }
     
@@ -146,25 +149,39 @@ class App extends React.Component {
   }
 
   render() {
+    let content;
+    if (this.state.authLoaded && this.state.loggedIn) {
+      // Show the logged in view with app data
+      content = (
+        <main>
+          <div className="wrapper">
+            <Switch>
+              <Route exact path='/' render={(routeProps) => {
+                return <Actions {...routeProps} userID={this.state.userID} storedActions={this.state.actions} /> 
+              }} />
+              <Route path='/history' render={(routeProps) => {
+                return <Log {...routeProps} userID={this.state.userID} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter} />
+              }} />
+            </Switch>
+          </div>
+        </main>
+      );
+    } else if (this.state.authLoaded && !this.state.loggedIn) {
+      // Show the public home page
+      content = <PublicHome logIn={this.logIn} />;
+    } else {
+      // Show the loader while we wait
+      content = (
+        <main className='main-loading'>
+          <Loader />
+        </main>
+      )
+    }
+
     return (
       <div className="app-wrapper">
         <Header logIn={this.logIn} logOut={this.logOut} loggedIn={this.state.loggedIn} toggleNav={this.toggleNav} navToggleClass={this.state.navToggleClass} />
-        {this.state.loggedIn ? (
-          <main>
-            <div className="wrapper">
-              <Switch>
-                <Route exact path='/' render={(routeProps) => {
-                  return <Actions {...routeProps} userID={this.state.userID} storedActions={this.state.actions} /> 
-                }} />
-                <Route path='/history' render={(routeProps) => {
-                  return <Log {...routeProps} userID={this.state.userID} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter} />
-                }} />
-              </Switch>
-            </div>
-          </main>
-        ) : (
-          <PublicHome logIn={this.logIn} />
-        )}
+        {content}
       </div>
     )
   }

@@ -27,6 +27,12 @@ main {
     margin-top: 20px;
 }
 
+.main-loading {
+    margin: 0;
+    flex: 1 1 auto;
+    display: flex;
+}
+
 a {
     text-decoration: none;
     color: $primary-color;
