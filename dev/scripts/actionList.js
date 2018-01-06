@@ -38,9 +38,9 @@ class ActionList extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <h2>Actions</h2>
+    let content;
+    if (this.props.storedActions.length > 0) {
+      content = (
         <ul className="action-list">
           {this.props.storedActions.map(action => {
             // Generate the 'last completed' text
@@ -72,6 +72,29 @@ class ActionList extends React.Component {
             )
           })}
         </ul>
+      )
+    } else {
+      content = (
+        <div>
+          <p>You haven't created any dog care actions to track yet.</p>
+          <p>You can track anything you want! For example:</p>
+          <ul>
+            <li>Feeding</li>
+            <li>Brushing (teeth or fur!)</li>
+            <li>Nail trimming</li>
+            <li>Veterinary check-ups</li>
+            <li>Medication doses</li>
+            <li>Treats :)</li>
+          </ul>
+          <p>You can also add a descriptions with info you need to remember (e.g. for an action called <strong>Feed Me</strong>, you could specify <em>125g, twice daily</em>.</p>
+          <p>Create some actions above, and they'll appear here!</p>
+        </div>
+      )
+    }
+    return (
+      <div>
+        <h2>Actions</h2>
+        {content}
       </div>
     )
   }
