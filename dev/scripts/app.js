@@ -181,7 +181,7 @@ class App extends React.Component {
                 return <Actions {...routeProps} userID={this.state.userID} storedActions={this.state.actions} /> 
               }} />
               <Route path='/history' render={(routeProps) => {
-                return <Log {...routeProps} userID={this.state.userID} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter} />
+                return <Log {...routeProps} userID={this.state.userID} log={this.state.log} filterBy={this.state.filterBy} filterByName={this.state.filterByName} filterLog={this.filterLog} resetFilter={this.resetFilter} toggleNav={this.toggleNav}/>
               }} />
             </Switch>
           </div>

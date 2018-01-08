@@ -48,7 +48,8 @@ class Log extends React.Component {
             content = (
                 <div className="no-log-instructions">
                     <p className="no-log-instructions__text--highlight">Oops! Looks like you haven't completed {isFiltered ? 'this action' : 'any actions'} yet.</p>
-                    <p className="no-log-instructions__text">Go to your <Link to='/'>Actions </Link> to complete {isFiltered ? 'it' : 'one'}.</p>
+                    {/* Call toggleNav on link click in case the mobile nav is open */}
+                    <p className="no-log-instructions__text">Go to your <Link to='/' onClick={this.props.toggleNav}>Actions </Link> to complete {isFiltered ? 'it' : 'one'}.</p>
                 </div>
             )
         }
