@@ -30,9 +30,9 @@
 - **Done**: Allow deletion of logs
 - **Done**: User logs in with Google account
 - **Done**: Private user data (each logged in user manages their own dogs)
-- **Done** Instructions
-  - **Done** When no actions exist, should guide the user on how to create
-  - **Done** When no history exists (no action have been completed), should guide the user on how to add to the history
-- **Done** Asynchronous events
-  - **Done** Show loader while retrieving auth information
-  - **Done (simplified)** Add loading animations for all API requests
+- **Done**: Instructions
+  - **Done**: When no actions exist, should guide the user on how to create
+  - **Done**: When no history exists (no action have been completed), should guide the user on how to add to the history
+- **Done**: Asynchronous events
+  - **Done**: Show loader while retrieving auth information
+  - **Done (simplified)**: Add loading animations for all API requests
