@@ -3,9 +3,21 @@ import LogSection from './logSection';
 import { Link } from 'react-router-dom';
 
 class Log extends React.Component {
+    constructor(props) {
+        super(props);
+        this.closeNavOnNavigate = this.closeNavOnNavigate.bind(this);
+    }
+
     componentWillUnmount() {
         // Clear log filter so it's unfiltered when we return
         this.props.filterLog('', '');
+    }
+
+    closeNavOnNavigate() {
+        if (this.props.navToggleClass.length > 0) {
+            // Since we know the nav is open, toggling it closes it
+            this.props.toggleNav();
+        }
     }
 
     render() {
@@ -48,8 +60,12 @@ class Log extends React.Component {
             content = (
                 <div className="no-log-instructions">
                     <p className="no-log-instructions__text--highlight">Oops! Looks like you haven't completed {isFiltered ? 'this action' : 'any actions'} yet.</p>
-                    {/* Call toggleNav on link click in case the mobile nav is open */}
-                    <p className="no-log-instructions__text">Go to your <Link to='/' onClick={this.props.toggleNav}>Actions </Link> to complete {isFiltered ? 'it' : 'one'}.</p>
+                    {/* On click, check if the nav is open
+                        - If open, close it
+                        - If closed, do nothing */}
+                    <p className="no-log-instructions__text">
+                        Go to your <span onClick={this.closeNavOnNavigate}><Link to='/'>Actions </Link></span> to complete {isFiltered ? 'it' : 'one'}.
+                    </p>
                 </div>
             )
         }
