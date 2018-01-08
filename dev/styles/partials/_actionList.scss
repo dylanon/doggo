@@ -59,3 +59,35 @@
     }
 }
 
+.no-actions-instructions {
+    &__container {
+        @extend .action-list;
+    }
+
+    &__card {
+        @extend .action-card;
+        padding-bottom: $base-spacing-rem;
+        &:hover {
+            cursor: initial;
+        }
+    }
+
+    &__text {
+        margin: 1rem 0;
+    }
+
+    &__text--highlight {
+        font-weight: 700;
+        font-size: 1.2em;
+    }
+
+    &__list {
+        text-align: left;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    &__list-item {
+        text-decoration: initial;
+    }
+}

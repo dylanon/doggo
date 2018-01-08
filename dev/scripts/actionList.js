@@ -75,25 +75,51 @@ class ActionList extends React.Component {
       )
     } else {
       content = (
-        <div>
-          <p>You haven't created any dog care actions to track yet.</p>
-          <p>You can track anything you want! For example:</p>
-          <ul>
-            <li>Feeding</li>
-            <li>Brushing (teeth or fur!)</li>
-            <li>Nail trimming</li>
-            <li>Veterinary check-ups</li>
-            <li>Medication doses</li>
-            <li>Treats :)</li>
-          </ul>
-          <p>You can also add a descriptions with info you need to remember (e.g. for an action called <strong>Feed Me</strong>, you could specify <em>125g, twice daily</em>.</p>
-          <p>Create some actions above, and they'll appear here!</p>
-        </div>
+        <ul className="no-actions-instructions__container">
+          <li className="no-actions-instructions__card">
+            <div className="no-actions-instructions__content">
+              <p className="no-actions-instructions__text--highlight">You haven't created any dog care actions to track yet.</p>
+              <p className="no-actions-instructions__text">Create some actions above, and they'll appear here!</p>
+            </div>
+          </li>
+          <li className="no-actions-instructions__card">
+            <div className="no-actions-instructions__content">
+              <p className="no-actions-instructions__text">Some examples:</p>
+              <ul className="no-actions-instructions__list fa-ul">
+                <li className="no-actions-instructions__list-item">
+                  <i className="fa-li fa fa-paw"></i>Feeding
+                </li>
+                <li className="no-actions-instructions__list-item">
+                  <i className="fa-li fa fa-paw"></i>Brushing (teeth or fur!)
+                </li>
+                <li className="no-actions-instructions__list-item">
+                  <i className="fa-li fa fa-paw"></i>Nail trimming
+                </li>
+                <li className="no-actions-instructions__list-item">
+                  <i className="fa-li fa fa-paw"></i> Veterinary check-ups
+                </li>
+                <li className="no-actions-instructions__list-item">
+                  <i className="fa-li fa fa-paw"></i>Medication doses
+                </li>
+                <li className="no-actions-instructions__list-item">
+                  <i className="fa-li fa fa-paw"></i>Treats :)
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li className="no-actions-instructions__card">
+            <div className="no-actions-instructions__content">
+              <p className="no-actions-instructions__text">Track anything you want!</p>
+              <p className="no-actions-instructions__text">Add descriptions with info you need to remember</p>
+              <p className="no-actions-instructions__text">(e.g. for an action called <strong>Feed Me</strong>, you could specify <em>125g, twice daily</em>.</p>
+            </div>
+          </li>
+        </ul>
       )
     }
     return (
       <div>
-        <h2>Actions</h2>
+        <h2>My Actions</h2>
         {content}
       </div>
     )
