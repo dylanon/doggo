@@ -10,6 +10,7 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
 const concat = require('gulp-concat');
+const historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('assets', () => {
 	return gulp.src('./dev/assets/*')
@@ -46,6 +47,7 @@ gulp.task('bs', () => {
 		server: {
 			baseDir: './'
 		},
+		middleware: [historyApiFallback()],
 		notify: false
 	});
 });
