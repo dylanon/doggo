@@ -46,9 +46,9 @@ class Log extends React.Component {
                 isFiltered = true;
             }
             content = (
-                <div>
-                    <p>Oops! Looks like you haven't completed {isFiltered ? 'this action' : 'any actions'} yet.</p>
-                    <p>Go to your <Link to='/'>Actions </Link> to complete {isFiltered ? 'it' : 'one'}.</p>
+                <div className="no-log-instructions">
+                    <p className="no-log-instructions__text--highlight">Oops! Looks like you haven't completed {isFiltered ? 'this action' : 'any actions'} yet.</p>
+                    <p className="no-log-instructions__text">Go to your <Link to='/'>Actions </Link> to complete {isFiltered ? 'it' : 'one'}.</p>
                 </div>
             )
         }

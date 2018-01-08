@@ -25,3 +25,12 @@
         weight: 300;
     }
 }
+
+.no-log-instructions {
+    margin-top: 80px;
+    font-size: 1.1em;
+
+    &__text--highlight {
+        font-weight: 700;
+    }
+}
